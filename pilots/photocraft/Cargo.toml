@@ -1,0 +1,11 @@
+[package]
+name = "edit-session-photocraft-probe"
+version = "0.1.0-alpha.1"
+edition = "2024"
+publish = false
+
+[dependencies]
+edit-session = { path = "../.." }
+photocraft-doc = { git = "https://github.com/storytold/photocraft", rev = "14a4ab9b3f38f0b68fde6add97384919710374c8" }
+photocraft-ops = { git = "https://github.com/storytold/photocraft", rev = "14a4ab9b3f38f0b68fde6add97384919710374c8" }
+serde_json = "1"
