@@ -69,6 +69,15 @@ cargo clippy --locked --all-targets -- -D warnings
 The core is tested on Rust 1.88.0 and stable in GitHub Actions, and Rust 1.99.1 on macOS arm64.
 The separate PhotoCraft adapter currently targets Rust 1.99 and pins its own dependencies.
 
+## Proposed PhotoCraft UI integration
+
+[PhotoCraft PR #9190](https://github.com/storytold/photocraft/pull/9190) uses this library
+inside **Edit Selected Guides** for live canvas previews, invalid-input recovery, cancellation,
+stale-context protection and no-op confirmation that preserves Redo. The integration branch
+also uses interaction-check for 10 scenarios / 44 steps against the real dialog and Session.
+Both dependencies are pinned to immutable commits. This is a working, tested consumer patch
+awaiting maintainer review; upstream adoption is not claimed.
+
 ## PhotoCraft integration pilot
 
 The [adapter in interaction-check](https://github.com/PerchAnton/interaction-check/tree/main/adapters/photocraft)

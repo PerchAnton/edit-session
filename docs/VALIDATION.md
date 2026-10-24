@@ -47,7 +47,7 @@ The [new report](https://github.com/PerchAnton/interaction-check/blob/main/photo
 records the dependency commits and executable hash. The earlier mutation report applies to
 the historical component adapter, not to this newer Session adapter.
 
-## What remains unverified
+## Limits of the earlier external adapter
 
 - Native pointer/keyboard interaction, actual rendered previews, accessibility, DPI and IME.
 - Integration into PhotoCraft's shipped UI, layer locks/selection-mask semantics, background
@@ -59,3 +59,28 @@ the historical component adapter, not to this newer Session adapter.
 The SDK, downloaded dependency cache and intermediate build directory were isolated in a
 temporary directory. Source, lockfiles, reports and local macOS arm64 probe executables
 are retained in the workspace (executables are gitignored). See README for reproduction with a normally installed Rust toolchain.
+
+## Real PhotoCraft UI consumer proposal — 24 October 2026
+
+[PR #9190](https://github.com/storytold/photocraft/pull/9190), head
+`46b4a183d5f44035bbc216dcf6196701bcb45bc9`, adds the library to PhotoCraft's UI dependency graph.
+Its Edit Selected Guides dialog and canvas use the draft; confirmed edits still run the
+existing engine command. The consumer repository owns its
+[adapter and scenarios](https://github.com/PerchAnton/photocraft/tree/46b4a183d5f44035bbc216dcf6196701bcb45bc9/tests/interactions/guide-edit),
+while CI fetches the separately pinned interaction-check runner.
+
+On macOS arm64, Rust 1.99.1:
+
+- Three real upstream regressions fail before the patch and pass with it: another document,
+  reused guide index, and an unchanged confirmation that destroys Redo.
+- 10 scenarios / 44 steps pass through the shipped dialog, control setter, egui frames and Session.
+- Full UI tests pass with `PHOTOCRAFT_LOCALE=en-US`: 3,798 unit and 132 integration tests;
+  19 ignored. The untouched native-language menu-label test fails separately on this Mac's
+  ru-UA locale; that limitation is disclosed in the PR.
+- Formatting, strict Clippy, architecture layers and WASM pass (24 crates plus HEIF).
+- Offscreen snapshots inspected in all 14 themes and three window sizes. A synthetic 24 MP
+  guide preview was also exercised. This does not establish general rendering or DPI fidelity.
+
+The PR remains a draft requiring review of the external dependency and its explicit source-policy
+exception. Native Windows, PdfCraft, release packaging and maintainer acceptance remain unverified.
+Linux scenario CI status is linked from the PR; no pending run is counted as passing here.
