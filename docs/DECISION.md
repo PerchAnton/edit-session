@@ -56,8 +56,10 @@ Its [existing text-preview API](https://github.com/storytold/pdfcraft/blob/a7801
 already leaves bytes, dirty state and undo unchanged; preserve that behavior. Do not use
 the prototype as a justification to replace a working preview mechanism.
 
-The initial opacity probe links real PhotoCraft Document/History types but does not exercise
-the GUI or the Session command façade and does not reproduce/fix #7601 or #8414.
+The initial opacity probe used real PhotoCraft Document/History types. The published adapter
+now lives in `interaction-check` and uses the real Session command façade with this library
+as an immutable Git dependency. It still does not exercise the GUI or reproduce/fix #7601
+or #8414. Upstream manifests have not been changed.
 
 ## Candidate 2: interaction-check
 

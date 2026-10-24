@@ -14,11 +14,11 @@ applies edits nor promises that a renderer's preview equals the committed output
 
 ## Use from another project
 
-Add this entry to your crate's `[dependencies]`, replacing `FULL_COMMIT_SHA` with the
-immutable commit you have reviewed from this repository:
+Add this entry to your crate's `[dependencies]`. This is the fixed revision used by the
+first PhotoCraft adapter:
 
 ```toml
-edit-session = { git = "https://github.com/PerchAnton/edit-session", rev = "FULL_COMMIT_SHA" }
+edit-session = { git = "https://github.com/PerchAnton/edit-session", rev = "28620b8264660ea84a182110cf5894da90281c42" }
 ```
 
 Commit the resulting `Cargo.lock`. The companion
@@ -66,27 +66,28 @@ cargo fmt --check
 cargo clippy --locked --all-targets -- -D warnings
 ```
 
-The manifest declares Rust 1.88; the current validation used Rust 1.99.1 on macOS arm64.
-The declared minimum has not been tested yet. The PhotoCraft probe requires its upstream
-Rust floor (1.95) or later.
+The core is tested on Rust 1.88.0 and stable in GitHub Actions, and Rust 1.99.1 on macOS arm64.
+The separate PhotoCraft adapter currently targets Rust 1.99 and pins its own dependencies.
 
-## PhotoCraft compatibility probe
+## PhotoCraft integration pilot
 
-`pilots/photocraft` links the actual `photocraft-doc` and `photocraft-ops` crates at commit
-`14a4ab9b3f38f0b68fde6add97384919710374c8`. It creates two synthetic layers and edits opacity
-through the draft, then records the resulting change in the real PhotoCraft `History`.
+The [adapter in interaction-check](https://github.com/PerchAnton/interaction-check/tree/main/adapters/photocraft)
+fetches this library as a pinned **Git dependency** alongside PhotoCraft's real document and
+engine crates at `14a4ab9b3f38f0b68fde6add97384919710374c8`. It stages opacity in `EditSession`,
+then calls `Session::execute("layer.setProps", ...)` once on commit. PhotoCraft owns the actual
+validation, document changes, history, Undo and Redo. The adapter writes no history itself.
 
 ```sh
-cargo build --locked --manifest-path pilots/photocraft/Cargo.toml
-python3 ../interaction-check/interaction_check.py \
-  ../interaction-check/scenarios/photocraft/*.json -- \
-  pilots/photocraft/target/debug/edit-session-photocraft-probe
+git clone https://github.com/PerchAnton/interaction-check
+cd interaction-check
+cargo build --locked --manifest-path adapters/photocraft/Cargo.toml
+python3 interaction_check.py scenarios/photocraft/*.json -- \
+  adapters/photocraft/target/debug/edit-session-photocraft-probe
 ```
 
-This is a **component compatibility probe**, not a live UI integration and not a fix for a
-PhotoCraft issue. A production frontend must dispatch through PhotoCraft's `Session`/commands;
-it must not copy this probe's direct `History` writes into UI handlers. PdfCraft has not been
-built or adapted by this prototype.
+This is an **external, headless integration pilot**. Upstream PhotoCraft has not added this
+dependency and its GUI is unchanged. It is not a fix for a PhotoCraft issue. PdfCraft has not
+been built or adapted by this project.
 
 See [research and adoption decision](docs/DECISION.md) and [validation evidence](docs/VALIDATION.md).
 
