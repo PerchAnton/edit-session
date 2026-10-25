@@ -1,5 +1,22 @@
 # Validation evidence
 
+## Snapshot contract review - 25 October 2026
+
+On macOS arm64 with the minimum compiler, Rust 1.88.0:
+
+- **16 lifecycle tests and 1 compile-fail doctest pass**.
+- Formatting, strict Clippy on all targets, and rustdoc with warnings denied pass.
+- A new owned multi-field form test checks independent drafts, invalid input retaining
+  the previous proposal, and one complete before/after change.
+- A clone-count test checks that 999 proposals and freshness checks do not repeatedly
+  clone snapshots. Only construction and Reset clone the original.
+
+No lifecycle algorithm or API change was needed. Documentation now explicitly requires
+independent value snapshots, stable contexts and equality over all relevant fields.
+Shared mutable pointers cannot provide that isolation merely by implementing Clone.
+These tests do not claim an application benchmark or prevent host contract violations.
+No consumer dependency pins were changed.
+
 ## PdfCraft consumer proposal — 25 October 2026
 
 [PR #4594](https://github.com/storytold/pdfcraft/pull/4594), consumer commit `535d990d10832baf3b0a64910c51b280c224bd5c` on upstream

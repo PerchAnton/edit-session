@@ -73,6 +73,17 @@ The host must discard/dismiss the preview on document close, target change or ot
 handle command failure without adding history, and revalidate its own permissions and locks.
 Applying preview values directly to the live model violates this library's contract.
 
+Values and contexts must be stable snapshots. For example, a struct containing owned
+`String` and `Vec` fields can be cloned into an independent draft. Cloning an
+`Rc<RefCell<_>>` or `Arc<Mutex<_>>` instead shares mutable storage: changing it can
+also change the captured original or live document, defeating cancellation and freshness
+checks. Use owned values or immutable shared data, and ensure `PartialEq` compares every
+relevant field. `Clone` alone does not guarantee isolation.
+
+The library clones the original once at construction and once for each `reset`.
+`propose` moves the accepted value; checks and `finish` do not clone it. Keep snapshots
+small, and let the application own images, rendering and background work.
+
 ## Validation
 
 ```sh

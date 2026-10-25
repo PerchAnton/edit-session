@@ -178,3 +178,91 @@ fn finish_errors_support_standard_error_reporting() {
         assert!(reported.source().is_none());
     }
 }
+
+#[test]
+fn owned_form_fields_remain_isolated_until_one_change_is_finished() {
+    #[derive(Clone, Debug, PartialEq, Eq)]
+    struct Fields {
+        title: String,
+        tags: Vec<String>,
+        inherited_size: Option<u16>,
+    }
+    let live = Fields {
+        title: "original".into(),
+        tags: vec!["keep".into()],
+        inherited_size: None,
+    };
+    let mut draft = EditSession::new(live.clone(), 7);
+    let mut proposal = draft.preview().clone();
+    proposal.title.push_str(" edited");
+    proposal.tags.push("new".into());
+    proposal.inherited_size = Some(12);
+    assert_eq!(draft.propose::<()>(Ok(proposal.clone())), Ok(()));
+    assert_eq!(draft.original(), &live);
+    assert_eq!(live.title, "original");
+    assert_eq!(live.tags, ["keep"]);
+    assert_eq!(live.inherited_size, None);
+    assert!(draft.propose(Err("incomplete field")).is_err());
+    assert_eq!(draft.preview(), &proposal);
+    assert_eq!(draft.check(&live, &7), Err(FinishError::InvalidProposal));
+    assert_eq!(draft.propose::<()>(Ok(proposal.clone())), Ok(()));
+    assert_eq!(
+        draft.finish(&live, &7),
+        Ok(Some(Change {
+            before: live,
+            after: proposal,
+        }))
+    );
+}
+
+#[test]
+fn proposing_and_checking_do_not_clone_snapshots_per_event() {
+    use std::cell::Cell;
+    struct Value<'a> {
+        number: u16,
+        clones: &'a Cell<usize>,
+    }
+    impl Clone for Value<'_> {
+        fn clone(&self) -> Self {
+            self.clones.set(self.clones.get() + 1);
+            Self {
+                number: self.number,
+                clones: self.clones,
+            }
+        }
+    }
+    impl PartialEq for Value<'_> {
+        fn eq(&self, other: &Self) -> bool {
+            self.number == other.number
+        }
+    }
+    let clones = Cell::new(0);
+    let live = Value {
+        number: 0,
+        clones: &clones,
+    };
+    let mut draft = EditSession::new(
+        Value {
+            number: 0,
+            clones: &clones,
+        },
+        7,
+    );
+    assert_eq!(clones.get(), 1);
+    for number in 1..1000 {
+        assert!(
+            draft
+                .propose::<()>(Ok(Value {
+                    number,
+                    clones: &clones
+                }))
+                .is_ok()
+        );
+        assert!(draft.check(&live, &7).is_ok());
+    }
+    assert_eq!(clones.get(), 1);
+    draft.reset();
+    assert_eq!(clones.get(), 2);
+    assert!(matches!(draft.finish(&live, &7), Ok(None)));
+    assert_eq!(clones.get(), 2);
+}

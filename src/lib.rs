@@ -4,6 +4,8 @@
 //! only its local draft. Store small parameters here, not a full document per pointer event.
 //! A context must include stable document/target identity and a revision that changes on
 //! every relevant edit (including undo/redo). Comparing values alone cannot detect ABA edits.
+//! Values must be independent snapshots: `Clone` alone does not guarantee isolation if a
+//! value shares mutable storage with the host. Equality must cover all relevant fields.
 #![no_std]
 #![forbid(unsafe_code)]
 
@@ -33,7 +35,9 @@ impl core::error::Error for FinishError {}
 /// A proposed change. The caller must apply it through its existing command engine.
 #[derive(Debug, PartialEq, Eq)]
 pub struct Change<T> {
+    /// The snapshot captured when the session began.
     pub before: T,
+    /// The last accepted proposal, to be applied by the host.
     pub after: T,
 }
 
@@ -53,6 +57,11 @@ pub struct EditSession<T, C> {
 
 impl<T: Clone, C> EditSession<T, C> {
     /// Begin from a value already validated by the application.
+    ///
+    /// Cloning `original` must produce an independently editable snapshot. Shared mutable
+    /// pointers such as `Rc<RefCell<_>>` can let edits change the original or live document
+    /// and defeat cancellation/conflict checks. Use owned fields or immutable shared data.
+    /// The context must also remain a stable snapshot until the session ends.
     pub fn new(original: T, context: C) -> Self {
         Self {
             preview: original.clone(),
