@@ -97,3 +97,84 @@ fn cancel_does_not_touch_host_value() {
     draft.cancel();
     assert_eq!(live, "original");
 }
+
+#[test]
+fn invalid_input_can_remain_editable_while_live_context_is_current() {
+    let mut draft = EditSession::new(10, 7);
+    assert!(draft.propose(Err("incomplete number")).is_err());
+    assert_eq!(draft.check_live(&10, &7), Ok(()));
+    assert_eq!(draft.check(&10, &7), Err(FinishError::InvalidProposal));
+    for (live, context, error) in [
+        (10, 8, FinishError::ContextChanged),
+        (11, 8, FinishError::ContextChanged),
+        (11, 7, FinishError::ValueChanged),
+    ] {
+        assert_eq!(draft.check_live(&live, &context), Err(error));
+        assert_eq!(draft.check(&live, &context), Err(error));
+    }
+    assert!(!draft.is_valid());
+}
+
+#[test]
+fn reset_clears_invalid_input_and_confirming_it_is_a_noop() {
+    // Reset only needs the value to be Clone, not the host's context.
+    #[derive(Debug, PartialEq)]
+    struct Context(u64);
+    let mut draft = EditSession::new(String::from("original"), Context(7));
+    assert_eq!(draft.propose::<()>(Ok(String::from("preview"))), Ok(()));
+    assert!(draft.propose(Err("invalid")).is_err());
+    draft.reset();
+    assert!(draft.is_valid());
+    assert_eq!(draft.preview(), "original");
+    assert_eq!(draft.original(), "original");
+    assert_eq!(draft.context(), &Context(7));
+    assert_eq!(
+        draft.finish(&String::from("original"), &Context(7)),
+        Ok(None)
+    );
+}
+
+#[test]
+fn reset_allows_further_editing_without_changing_the_original() {
+    let mut draft = EditSession::new(10, 7);
+    assert_eq!(draft.propose::<()>(Ok(12)), Ok(()));
+    draft.reset();
+    draft.reset();
+    assert_eq!(draft.propose::<()>(Ok(15)), Ok(()));
+    assert_eq!(
+        draft.finish(&10, &7),
+        Ok(Some(Change {
+            before: 10,
+            after: 15
+        }))
+    );
+}
+
+#[test]
+fn reset_does_not_rebase_a_stale_draft_or_hide_a_live_value_conflict() {
+    for (live, context, error) in [
+        (10, 9, FinishError::ContextChanged), // Edit then Undo back to the original.
+        (12, 7, FinishError::ValueChanged),
+    ] {
+        let mut draft = EditSession::new(10, 7);
+        assert_eq!(draft.propose::<()>(Ok(12)), Ok(()));
+        draft.reset();
+        assert_eq!(draft.finish(&live, &context), Err(error));
+    }
+}
+
+#[test]
+fn finish_errors_support_standard_error_reporting() {
+    for (error, message) in [
+        (
+            FinishError::InvalidProposal,
+            "the latest proposal is invalid",
+        ),
+        (FinishError::ContextChanged, "the edit context has changed"),
+        (FinishError::ValueChanged, "the live value has changed"),
+    ] {
+        let reported: &dyn core::error::Error = &error;
+        assert_eq!(reported.to_string(), message);
+        assert!(reported.source().is_none());
+    }
+}

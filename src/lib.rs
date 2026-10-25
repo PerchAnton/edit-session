@@ -18,6 +18,18 @@ pub enum FinishError {
     ValueChanged,
 }
 
+impl core::fmt::Display for FinishError {
+    fn fmt(&self, formatter: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        formatter.write_str(match self {
+            Self::InvalidProposal => "the latest proposal is invalid",
+            Self::ContextChanged => "the edit context has changed",
+            Self::ValueChanged => "the live value has changed",
+        })
+    }
+}
+
+impl core::error::Error for FinishError {}
+
 /// A proposed change. The caller must apply it through its existing command engine.
 #[derive(Debug, PartialEq, Eq)]
 pub struct Change<T> {
@@ -49,9 +61,19 @@ impl<T: Clone, C> EditSession<T, C> {
             valid: true,
         }
     }
+
+    /// Restore the original preview and clear invalid input, keeping the draft open.
+    ///
+    /// The original value and context are retained: this does not rebase a stale draft
+    /// or change the live document. The host must refresh its displayed preview itself.
+    pub fn reset(&mut self) {
+        self.preview = self.original.clone();
+        self.valid = true;
+    }
 }
 
 impl<T, C> EditSession<T, C> {
+    /// The validated value captured when editing began.
     pub fn original(&self) -> &T {
         &self.original
     }
@@ -61,10 +83,12 @@ impl<T, C> EditSession<T, C> {
         &self.preview
     }
 
+    /// The host context captured when editing began; never changed by this session.
     pub fn context(&self) -> &C {
         &self.context
     }
 
+    /// Whether the latest proposal was accepted. This does not check live host state.
     pub fn is_valid(&self) -> bool {
         self.valid
     }
@@ -90,14 +114,28 @@ impl<T, C> EditSession<T, C> {
 }
 
 impl<T: PartialEq, C: PartialEq> EditSession<T, C> {
-    /// Check immediately before applying on the host's serialized command path.
-    /// This comparison is not a lock and is not a distributed transaction.
-    pub fn check(&self, live: &T, context: &C) -> Result<(), FinishError> {
+    /// Check whether the draft still belongs to the current host state, independently
+    /// of invalid input. Useful when deciding whether an open editor must be dismissed.
+    ///
+    /// This never returns `InvalidProposal` and does not authorize a commit. Use `check`
+    /// or `finish` immediately before applying on the host's serialized command path.
+    /// Context conflicts take precedence over value conflicts. No lock is acquired.
+    pub fn check_live(&self, live: &T, context: &C) -> Result<(), FinishError> {
         if *context != self.context {
             Err(FinishError::ContextChanged)
         } else if *live != self.original {
             Err(FinishError::ValueChanged)
-        } else if !self.valid {
+        } else {
+            Ok(())
+        }
+    }
+
+    /// Check live host state and proposal validity immediately before applying on the
+    /// host's serialized command path. Live conflicts take precedence over invalid input.
+    /// This comparison is not a lock and is not a distributed transaction.
+    pub fn check(&self, live: &T, context: &C) -> Result<(), FinishError> {
+        self.check_live(live, context)?;
+        if !self.valid {
             Err(FinishError::InvalidProposal)
         } else {
             Ok(())
