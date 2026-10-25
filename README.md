@@ -1,6 +1,6 @@
 # edit-session
 
-**Experimental, 0.1.0-alpha.1.** An independent library maintained by
+**Experimental, 0.1.0-alpha.2.** An independent library maintained by
 [PerchAnton](https://github.com/PerchAnton). Available as a Git dependency; not published to
 crates.io or adopted by upstream PhotoCraft/PdfCraft.
 
@@ -14,11 +14,10 @@ applies edits nor promises that a renderer's preview equals the committed output
 
 ## Use from another project
 
-Add this entry to your crate's `[dependencies]`. This is the fixed revision used by the
-first PhotoCraft adapter:
+Add this entry to your crate's `[dependencies]` to use the alpha 2 API at a fixed revision:
 
 ```toml
-edit-session = { git = "https://github.com/PerchAnton/edit-session", rev = "28620b8264660ea84a182110cf5894da90281c42" }
+edit-session = { git = "https://github.com/PerchAnton/edit-session", rev = "033f7c3a67b825b8f222288788cc61234c0c945d" }
 ```
 
 Commit the resulting `Cargo.lock`. The companion
@@ -46,6 +45,22 @@ preview but blocks commit; correction makes the session valid again. Changed con
 live value rejects the draft. Call `check` before `finish` when invalid input must remain
 editable. Cancel or drop only discards local data, so no rollback command is necessary.
 
+## Keeping a dialog open
+
+Alpha 2 adds two operations without changing `check` or `finish` semantics:
+
+- `check_live(&live, &context)` checks document/target/revision and the original value,
+  independently of proposal validity. A host can keep incomplete input editable while
+  dismissing a dialog whose target has changed. Success does **not** mean the proposal can
+  be committed: `check` and `finish` still reject invalid input.
+- `reset()` restores the original preview and clears invalid input without consuming the
+  session. The host refreshes the displayed controls/preview. Confirming immediately is a
+  no-op; the user can also continue editing. The original context is preserved, so Reset
+  cannot make a stale session current again or undo another document edit.
+
+`FinishError` now implements `core::fmt::Display` and `core::error::Error` for standard
+error reporting. The library remains dependency-free and `no_std`, with Rust 1.88 as its minimum.
+
 ## Context contract
 
 Use a document identity, target identity, selection identity where relevant, and a revision
@@ -66,7 +81,8 @@ cargo fmt --check
 cargo clippy --locked --all-targets -- -D warnings
 ```
 
-The core is tested on Rust 1.88.0 and stable in GitHub Actions, and Rust 1.99.1 on macOS arm64.
+The CI matrix tests Rust 1.88.0 and stable. Alpha 2 also passed locally on Rust 1.88.0,
+macOS arm64; see [validation evidence](docs/VALIDATION.md).
 The separate PhotoCraft adapter currently targets Rust 1.99 and pins its own dependencies.
 
 ## Proposed PhotoCraft UI integration
@@ -75,7 +91,9 @@ The separate PhotoCraft adapter currently targets Rust 1.99 and pins its own dep
 inside **Edit Selected Guides** for live canvas previews, invalid-input recovery, cancellation,
 stale-context protection and no-op confirmation that preserves Redo. The integration branch
 also uses interaction-check for 10 scenarios / 44 steps against the real dialog and Session.
-Both dependencies are pinned to immutable commits. This is a working, tested consumer patch
+Both dependencies are pinned to immutable commits; its library pin remains the alpha 1
+revision `28620b8264660ea84a182110cf5894da90281c42`. The alpha 2 additions are not yet used there.
+This is a working, tested consumer patch
 awaiting maintainer review; upstream adoption is not claimed.
 
 ## PhotoCraft integration pilot

@@ -1,5 +1,26 @@
 # Validation evidence
 
+## Alpha 2 review — 25 October 2026
+
+On macOS arm64 with **Rust 1.88.0**, the minimum supported compiler:
+
+- `cargo test --locked --offline`: **14 lifecycle tests and 1 compile-fail doctest passed**.
+- `cargo fmt --check` and `cargo clippy --locked --offline --all-targets -- -D warnings`: passed.
+- Tests cover keeping invalid input editable through `check_live`, conflict precedence,
+  Reset after invalid input, a no-op after Reset, continued editing and rejection of stale
+  context/live values after Reset. A non-Clone context remains supported.
+- Standard error reporting works through `core::error::Error`; no dependencies or `std`
+  requirement were introduced. Existing single-use `finish` behavior is unchanged.
+
+The companion runner's alpha 2 changes also passed 18 scenarios / 85 steps against the
+previously built PhotoCraft engine and UI adapters. Those binaries still contain the
+**alpha 1 library pin**: this is runner/protocol compatibility evidence, not a rebuilt
+PhotoCraft integration of the new Rust API. See the
+[runner validation record](https://github.com/PerchAnton/interaction-check/blob/main/docs/VALIDATION.md).
+
+The existing PhotoCraft PR is ready for review. Adoption and any change to its pinned
+dependencies remain separate from this library review.
+
 ## Initial component prototype
 
 Checked 24 October 2026, 22:35 Europe/Kyiv, macOS arm64. Rust 1.99.1; Python 3.14.
