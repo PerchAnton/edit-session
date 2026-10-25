@@ -4,6 +4,16 @@ Research date: 24 October 2026 (Europe/Kyiv). The implementation is an experimen
 maintainer has agreed to adopt either project. The first consumer focus is PhotoCraft,
 followed by PdfCraft.
 
+## Follow-up — 25 October 2026
+
+The narrow consumers are now proposed in [PhotoCraft #9190](https://github.com/storytold/photocraft/pull/9190)
+(Edit Selected Guides) and [PdfCraft #4594](https://github.com/storytold/pdfcraft/pull/4594) (Document Properties).
+The latter uses alpha 2 without adding any application-specific API to the library.
+Its baseline regressions reproduce stale metadata overwrites and loss of Redo after Undo;
+the adapter drives real widgets and checks engine save/reopen. [Validation](VALIDATION.md)
+records the scoped checks. These are tested consumer patches, not upstream adoption.
+The research and candidate-selection notes below describe the earlier 24 October snapshot.
+
 ## What the repositories show
 
 PhotoCraft and PdfCraft are Rust applications using egui 0.36 and pinned dependencies from

@@ -96,6 +96,22 @@ revision `28620b8264660ea84a182110cf5894da90281c42`. The alpha 2 additions are n
 This is a working, tested consumer patch
 awaiting maintainer review; upstream adoption is not claimed.
 
+## Proposed PdfCraft UI consumer
+
+[PdfCraft PR #4594](https://github.com/storytold/pdfcraft/pull/4594) integrates alpha 2 into **Document Properties**.
+Description, Initial View and Custom values share a draft bound to document identity,
+edit generation and permissions. `check_live` rejects stale input after edits, Undo/Redo,
+reload or a document switch; the existing engine commits one atomic batch. Cancel,
+Escape and no-ops do not add history. Failed engine edits retain the form for correction.
+Clean inspection tabs retain their existing live refresh without rebasing typed input.
+
+The consumer owns a [real UI adapter](https://github.com/PerchAnton/pdfcraft/blob/535d990d10832baf3b0a64910c51b280c224bd5c/crates/ui-egui/examples/properties_scenarios.rs)
+and [10 scenarios / 79 steps](https://github.com/PerchAnton/pdfcraft/tree/535d990d10832baf3b0a64910c51b280c224bd5c/tests/interactions/document-properties),
+replayed by interaction-check, including save/reopen and preservation of custom metadata.
+Local scoped UI tests, strict Clippy, assets, parity and wasm checks pass. Both dependencies
+are pinned; upstream review of the source-policy exception and adoption is pending.
+See [reproduction instructions](https://github.com/PerchAnton/pdfcraft/blob/535d990d10832baf3b0a64910c51b280c224bd5c/docs/document-properties-sessions.md).
+
 ## PhotoCraft integration pilot
 
 The [adapter in interaction-check](https://github.com/PerchAnton/interaction-check/tree/main/adapters/photocraft)
@@ -113,8 +129,7 @@ python3 interaction_check.py scenarios/photocraft/*.json -- \
 ```
 
 This is an **external, headless integration pilot**. Upstream PhotoCraft has not added this
-dependency and its GUI is unchanged. It is not a fix for a PhotoCraft issue. PdfCraft has not
-been built or adapted by this project.
+dependency and its GUI is unchanged. It is not a fix for a PhotoCraft issue. The separate PdfCraft UI proposal is described above.
 
 See [research and adoption decision](docs/DECISION.md) and [validation evidence](docs/VALIDATION.md).
 
