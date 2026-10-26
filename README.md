@@ -12,6 +12,19 @@ The host keeps its renderer, numeric parser, units, command dispatch and undo hi
 `edit-session` holds small draft parameters and a context supplied by the host. It neither
 applies edits nor promises that a renderer's preview equals the committed output.
 
+## What problem does this solve?
+
+An open draft can outlive the document revision it was based on. In the proposed
+PdfCraft consumer, two real widget regressions show the consequence: an old title
+overwrites a newer edit, or confirmation after Undo discards Redo. Both fail on the
+baseline and pass with the guarded consumer patch.
+
+[Evidence and adoption trade-offs](docs/ADOPTION.md) includes pinned sources, exact
+before/after behavior and reproduction commands. It also counts the cost: that patch
+adds a net 217 production UI lines. A local helper can provide the same protection;
+neither faster execution nor less total code has been demonstrated. Use this library
+when sharing the tested lifecycle is worth the dependency and integration cost.
+
 ## Use from another project
 
 Add this entry to your crate's `[dependencies]` to use the alpha 2 API at a fixed revision:
