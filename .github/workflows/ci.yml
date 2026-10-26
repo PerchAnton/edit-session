@@ -15,4 +15,4 @@ jobs:
       - run: cargo +${{ matrix.rust }} run --locked --example retry_command
       - run: cargo +${{ matrix.rust }} fmt --check
       - run: cargo +${{ matrix.rust }} clippy --locked --all-targets -- -D warnings
-      - run: cargo +${{ matrix.rust }} package --locked
+      - run: cargo +${{ matrix.rust }} publish --dry-run --locked --registry crates-io

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.4 — unpublished candidate
+
+- Prepare crates.io publication with an explicit registry allowlist, a package
+  landing page, dry-run CI and a manual workflow for later Trusted Publishing.
+- Document the one-time token-based first upload required by crates.io.
+- Public API, behavior, Rust 1.88 minimum and zero runtime dependencies are unchanged.
+  Existing GitHub archives and tags remain unchanged.
+
 ## 0.1.0-alpha.3
 
 - Add a runnable host command recovery example and eight native Rust tests covering

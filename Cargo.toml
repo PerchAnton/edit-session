@@ -1,16 +1,16 @@
 [package]
 name = "edit-session"
-version = "0.1.0-alpha.3"
+version = "0.1.0-alpha.4"
 edition = "2024"
 rust-version = "1.88"
 description = "Toolkit-independent preview, validation and commit lifecycle"
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/PerchAnton/edit-session"
-readme = "README.md"
-publish = false
+readme = "PACKAGE.md"
+publish = ["crates-io"]
 keywords = ["editing", "draft", "validation", "undo", "no-std"]
 categories = ["no-std", "gui"]
-include = ["src/**", "tests/**", "examples/**", "docs/**", "README.md", "CHANGELOG.md", "LICENSE-*", "Cargo.toml", "Cargo.lock"]
+include = ["src/**", "tests/**", "examples/**", "docs/**", "README.md", "PACKAGE.md", "CHANGELOG.md", "LICENSE-*", "Cargo.toml", "Cargo.lock"]
 
 [[example]]
 name = "retry_command"
