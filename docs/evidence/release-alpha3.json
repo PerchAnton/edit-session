@@ -1,0 +1,33 @@
+{
+  "snapshot_date": "2026-10-26",
+  "timezone": "Europe/Kiev",
+  "tag": "v0.1.0-alpha.3",
+  "commit": "968ebd2f9a9b04c068b34a3fba42c246261380b7",
+  "published_at": "2026-10-26T10:39:56Z",
+  "release_url": "https://github.com/PerchAnton/edit-session/releases/tag/v0.1.0-alpha.3",
+  "status": "prerelease",
+  "runtime_dependencies": 0,
+  "checks": {
+    "library_lifecycle": 16,
+    "host_example": 8,
+    "compile_fail_doctest": 1
+  },
+  "ci": [
+    "https://github.com/PerchAnton/edit-session/actions/runs/40308959683"
+  ],
+  "assets": [
+    {
+      "name": "edit-session-0.1.0-alpha.3.crate",
+      "bytes": 30112,
+      "sha256": "9aaebf28ccbfcaa221872fd62d2b99eca5a288a70c8fd043f658d4ee2a0b844f",
+      "url": "https://github.com/PerchAnton/edit-session/releases/download/v0.1.0-alpha.3/edit-session-0.1.0-alpha.3.crate"
+    },
+    {
+      "name": "SHA256SUMS",
+      "bytes": 99,
+      "sha256": "e65ed0faf1d3868b5e33a58203c473cffa90b8b5a1a2af843ca4e557ea43fe0c",
+      "url": "https://github.com/PerchAnton/edit-session/releases/download/v0.1.0-alpha.3/SHA256SUMS"
+    }
+  ],
+  "scope": "Snapshot of the published GitHub release. Asset sizes are compressed downloads, not runtime memory; test counts are scoped checks, not overall coverage."
+}

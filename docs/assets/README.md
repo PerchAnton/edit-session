@@ -26,3 +26,19 @@ Its source is `EditSession::check`, `EditSession::finish` and `Change` in
 [src/lib.rs](../../src/lib.rs). It shows the host/library/host sequence and the
 consuming finish boundary, including command-error recovery. The README gives
 the same information in a text table. Existing measured counts are unchanged.
+
+## Release landing graphic
+
+`release.svg` is a dated release summary and a three-step workflow diagram. Its
+version, publication date, exact compressed file size and CI references come from
+the [release snapshot](../evidence/release-alpha3.json). KiB means bytes / 1024,
+rounded to one decimal; this is download size, not runtime memory or a comparison
+between projects. The README repeats the scoped counts and links to the real assets.
+
+The workflow describes the implemented example/CLI; it is not a performance chart.
+For interaction-check, native-test translation is manual and a prefix is not an
+automatically minimized or rerun reproduction. For edit-session, recovery belongs
+to the host example and requires atomic rejection and serialized freshness checks.
+Existing comparative figures remain available in the README's expandable evidence
+section. CI badges are live; release facts are snapshots. Do not update an old release's
+size or date using an unreleased package. Inspect the SVG at README width after edits.
