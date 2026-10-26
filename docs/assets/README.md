@@ -19,3 +19,9 @@ To update the graphic, first reproduce or obtain new evidence. Then edit the SVG
 and proportional bar widths, its snapshot date, and the README table together. Keep
 the consumer approval status and measurement limitations visible. Render the SVG and
 check text fit at the GitHub README width. The CI badge is live; these counts are not.
+
+`commit-boundary.svg` is an API responsibility diagram, not a new measurement.
+Its source is `EditSession::check`, `EditSession::finish` and `Change` in
+[src/lib.rs](../../src/lib.rs). It shows the host/library/host sequence and the
+consuming finish boundary, including command-error recovery. The README gives
+the same information in a text table. Existing measured counts are unchanged.
