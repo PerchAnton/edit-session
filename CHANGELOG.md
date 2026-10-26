@@ -9,5 +9,6 @@
 - Verify the example and source crate packaging in CI on Rust 1.88 and stable.
 - Public library API and behavior are unchanged from alpha.2. No runtime dependencies.
 
-Experimental prerelease candidate. Package preparation is not crates.io publication
-or acceptance of a PhotoCraft/PdfCraft integration.
+Published as a GitHub prerelease on 26 October 2026; not published on crates.io.
+See the [alpha compatibility policy](docs/RELEASING.md#alpha-compatibility) before upgrading.
+Publication does not establish acceptance of a PhotoCraft/PdfCraft integration.
