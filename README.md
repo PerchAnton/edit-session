@@ -47,6 +47,27 @@ adds a net 217 production UI lines. A local helper can provide the same protecti
 neither faster execution nor less total code has been demonstrated. Use this library
 when sharing the tested lifecycle is worth the dependency and integration cost.
 
+## Where the library ends
+
+![Application validates input; edit-session checks the live value, context and proposal and consumes the draft on finish; the application applies the command and owns permissions, history and error recovery.](docs/assets/commit-boundary.svg)
+
+| Result | What the host must do |
+| --- | --- |
+| `check` rejects invalid input | Keep the draft and fields available for correction; dismiss or rebuild if the target/context is stale |
+| `finish` returns `Ok(None)` | Skip command execution and preserve history/Redo |
+| `finish` returns `Ok(Some(change))` | Apply through the existing command engine on the same serialized edit path |
+| `finish` returns an error, or the later command fails | The session has been consumed. The host owns recovery; preserve any fields needed for retry and revalidate target, revision and permissions before rebuilding |
+
+`finish` does not execute a command, reopen a dialog, roll back partial host writes,
+or make a retry safe by itself. A host test should reject a command and verify that
+its UI can recover without applying to a different target or changing history on
+rejection. Passing library tests alone does not establish this consumer behavior.
+
+The [native Rust tests](tests/lifecycle.rs) run with `cargo test --locked`; they do
+not require interaction-check. Use the separate replay tool when a portable event
+sequence and shared report help your consumer. The [API contracts](src/lib.rs) and
+[adoption evidence](docs/ADOPTION.md) explain the boundaries and measured trade-offs.
+
 ## Use from another project
 
 Add this entry to your crate's `[dependencies]` to use the alpha 2 API at a fixed revision:
