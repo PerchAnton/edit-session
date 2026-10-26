@@ -6,7 +6,51 @@ an optional way to test consumer workflows, not a dependency of this crate.
 
 [![CI](https://github.com/PerchAnton/edit-session/actions/workflows/ci.yml/badge.svg?branch=main&event=push)](https://github.com/PerchAnton/edit-session/actions/workflows/ci.yml)
 
-**[Get started](#use-from-another-project)** · **[Evidence and trade-offs](docs/ADOPTION.md)** · **[API source](src/lib.rs)** · **[MIT OR Apache-2.0](#license)**
+**[Download](#current-prerelease)** · **[Try recovery](#retry-after-a-rejected-command)** · **[Use the library](#use-from-another-project)** · **[Evidence](#evidence-and-trade-offs)** · **[License](#license)**
+
+## Current prerelease
+
+**[v0.1.0-alpha.3](https://github.com/PerchAnton/edit-session/releases/tag/v0.1.0-alpha.3) · released 26 October 2026 · Rust 1.88+**
+
+**[Download the source crate](https://github.com/PerchAnton/edit-session/releases/download/v0.1.0-alpha.3/edit-session-0.1.0-alpha.3.crate)** · [SHA-256 checksums](https://github.com/PerchAnton/edit-session/releases/download/v0.1.0-alpha.3/SHA256SUMS) · [Changelog](CHANGELOG.md) · [Use as a dependency](#use-from-another-project)
+
+![edit-session alpha 3, released 26 October 2026: 0 runtime dependencies, 25 scoped checks and a 29.4 KiB source archive. Check live state, attempt the host command, retain fields and draft on rejection, and close on success.](docs/assets/release.svg)
+
+Release snapshot: **16 lifecycle tests + 8 host-example tests + 1 doctest**,
+**0 runtime dependencies**, **29.4 KiB source crate (30,112 bytes)**.
+[Exact file, hash and release CI](docs/evidence/release-alpha3.json). The example tests
+model host recovery; they are separate from real application UI regressions. Package
+size describes the download. The library API is unchanged from alpha.2.
+
+This GitHub prerelease is available as a source archive or fixed Git dependency;
+it is not published on crates.io. The CI badge above tracks current main, while
+the release snapshot stays tied to its tagged commit.
+
+## Retry after a rejected command
+
+[Run the recovery example](docs/RECOVERY.md): it keeps the draft and raw fields open
+when a host command is denied, checks freshness again on retry, and closes only after
+success or a checked no-op. **Eight example tests pass** alongside the 16 lifecycle
+tests and one doctest. They cover recovery, stale document/target/revision, invalid
+correction, Cancel, preserved Redo and duplicate confirmation.
+
+From a checkout of this release:
+
+```sh
+git clone --branch v0.1.0-alpha.3 --depth 1 https://github.com/PerchAnton/edit-session.git
+cd edit-session
+cargo run --locked --example retry_command
+cargo test --locked --example retry_command
+```
+
+This uses the existing API; the host owns atomic command rejection and UI state.
+These model tests do not substitute for consumer UI regressions. [Changelog](CHANGELOG.md)
+and [release preparation](docs/RELEASING.md) describe the published alpha and its package checks.
+
+## Evidence and trade-offs
+
+<details>
+<summary>Open measured results, comparisons and sources</summary>
 
 ![edit-session evidence: zero runtime dependencies; 16 lifecycle tests, one compile-fail doctest and eight host recovery example tests; 999 proposal/check pairs with no additional library-triggered clones. Two proposed PdfCraft regression checks improve from zero of two to two of two passing; the integration adds 217 production UI lines.](docs/assets/overview.svg)
 
@@ -34,6 +78,8 @@ for the host to commit. The crate has no dependencies and uses `no_std`.
 The host keeps its renderer, numeric parser, units, command dispatch and undo history.
 `edit-session` holds small draft parameters and a context supplied by the host. It neither
 applies edits nor promises that a renderer's preview equals the committed output.
+
+</details>
 
 ## What problem does this solve?
 
@@ -69,29 +115,12 @@ not require interaction-check. Use the separate replay tool when a portable even
 sequence and shared report help your consumer. The [API contracts](src/lib.rs) and
 [adoption evidence](docs/ADOPTION.md) explain the boundaries and measured trade-offs.
 
-## Retry after a rejected command
-
-[Run the recovery example](docs/RECOVERY.md): it keeps the draft and raw fields open
-when a host command is denied, checks freshness again on retry, and closes only after
-success or a checked no-op. **Eight example tests pass** alongside the 16 lifecycle
-tests and one doctest. They cover recovery, stale document/target/revision, invalid
-correction, Cancel, preserved Redo and duplicate confirmation.
-
-```sh
-cargo run --locked --example retry_command
-cargo test --locked --example retry_command
-```
-
-This uses the existing API; the host owns atomic command rejection and UI state.
-These model tests do not substitute for consumer UI regressions. [Changelog](CHANGELOG.md)
-and [release preparation](docs/RELEASING.md) describe the alpha candidate and package.
-
 ## Use from another project
 
-Add this entry to your crate's `[dependencies]` to use the alpha 2 API at a fixed revision:
+Add this entry to your crate's `[dependencies]` to use the published alpha 3 at its fixed release commit:
 
 ```toml
-edit-session = { git = "https://github.com/PerchAnton/edit-session", rev = "033f7c3a67b825b8f222288788cc61234c0c945d" }
+edit-session = { git = "https://github.com/PerchAnton/edit-session", rev = "968ebd2f9a9b04c068b34a3fba42c246261380b7" }
 ```
 
 Commit the resulting `Cargo.lock`. The companion
