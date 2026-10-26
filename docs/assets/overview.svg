@@ -16,9 +16,9 @@
 <text x="54" y="257" font-size="17" fill="#172438" font-weight="700" text-anchor="start">runtime dependencies</text>
 <text x="54" y="280" font-size="14" fill="#526176" font-weight="400" text-anchor="start">no_std · unsafe code forbidden</text>
 <rect x="364" y="178" width="312" height="120" rx="14" fill="#ffffff" stroke="#dce3ec"/>
-<text x="386" y="227" font-size="42" fill="#6554c0" font-weight="700" text-anchor="start">16 + 1</text>
-<text x="386" y="257" font-size="17" fill="#172438" font-weight="700" text-anchor="start">passing library tests</text>
-<text x="386" y="280" font-size="14" fill="#526176" font-weight="400" text-anchor="start">16 lifecycle + 1 compile-fail doctest</text>
+<text x="386" y="227" font-size="42" fill="#6554c0" font-weight="700" text-anchor="start">16 + 1 + 8</text>
+<text x="386" y="257" font-size="17" fill="#172438" font-weight="700" text-anchor="start">library + recovery example tests</text>
+<text x="386" y="280" font-size="14" fill="#526176" font-weight="400" text-anchor="start">16 lifecycle · 1 doctest · 8 host tests</text>
 <rect x="696" y="178" width="312" height="120" rx="14" fill="#ffffff" stroke="#dce3ec"/>
 <text x="718" y="227" font-size="42" fill="#6554c0" font-weight="700" text-anchor="start">999</text>
 <text x="718" y="257" font-size="17" fill="#172438" font-weight="700" text-anchor="start">proposal / check pairs</text>
@@ -46,5 +46,5 @@
 <text x="648" y="534" font-size="17" fill="#526176" font-weight="400" text-anchor="start">the same protection.</text>
 <text x="648" y="577" font-size="14" fill="#526176" font-weight="400" text-anchor="start">Upstream approval remains pending.</text>
 <text x="32" y="631" font-size="14" fill="#526176" font-weight="400" text-anchor="start">¹ After 1 construction clone; Reset adds 1. Caller work is excluded.</text>
-<text x="32" y="655" font-size="14" fill="#526176" font-weight="400" text-anchor="start">Experimental alpha.2 · Rust 1.88+ · Sources, scope and reproduction commands below.</text>
+<text x="32" y="655" font-size="14" fill="#526176" font-weight="400" text-anchor="start">Experimental alpha.3 · Rust 1.88+ · Sources, scope and reproduction commands below.</text>
 </g></svg>

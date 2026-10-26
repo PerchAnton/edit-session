@@ -12,5 +12,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - run: rustup toolchain install ${{ matrix.rust }} --profile minimal --component rustfmt,clippy
       - run: cargo +${{ matrix.rust }} test --locked
+      - run: cargo +${{ matrix.rust }} run --locked --example retry_command
       - run: cargo +${{ matrix.rust }} fmt --check
       - run: cargo +${{ matrix.rust }} clippy --locked --all-targets -- -D warnings
+      - run: cargo +${{ matrix.rust }} package --locked
