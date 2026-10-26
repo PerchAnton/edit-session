@@ -1,6 +1,6 @@
 [package]
 name = "edit-session"
-version = "0.1.0-alpha.2"
+version = "0.1.0-alpha.3"
 edition = "2024"
 rust-version = "1.88"
 description = "Toolkit-independent preview, validation and commit lifecycle"
@@ -8,6 +8,13 @@ license = "MIT OR Apache-2.0"
 repository = "https://github.com/PerchAnton/edit-session"
 readme = "README.md"
 publish = false
+keywords = ["editing", "draft", "validation", "undo", "no-std"]
+categories = ["no-std", "gui"]
+include = ["src/**", "tests/**", "examples/**", "docs/**", "README.md", "CHANGELOG.md", "LICENSE-*", "Cargo.toml", "Cargo.lock"]
+
+[[example]]
+name = "retry_command"
+test = true
 
 [lints.rust]
 unsafe_code = "forbid"

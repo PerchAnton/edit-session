@@ -1,5 +1,23 @@
 # Validation evidence
 
+## Alpha 3: host recovery example and package — 26 October 2026
+
+Rust 1.99.1/macOS arm64: 16 lifecycle tests, 8 native host-example tests and one
+compile-fail doctest pass. The runnable example, formatting and strict all-target Clippy
+also pass. Rust 1.88/stable checks are configured in CI; local 1.99 does not replace MSRV CI.
+
+The example tests keep raw fields on atomic command rejection, retry after permission
+restoration, reject stale context/value/Undo ABA, and preserve no-op/Cancel/history
+behavior. They use a small model, not real PhotoCraft/PdfCraft widgets. As one controlled
+mutation, clearing the draft before propagating a command error makes the recovery test
+fail at `dialog.draft.is_some()`. This mutation was applied only to a temporary copy.
+
+`cargo package --locked --allow-dirty` verified the candidate archive builds. All 25
+checks and the runnable example also pass from the extracted package. Final release
+artifacts must be rebuilt from the exact clean commit. The public API is unchanged
+from alpha.2; crate publication is disabled pending a separate registry decision.
+
+
 ## Snapshot contract review - 25 October 2026
 
 On macOS arm64 with the minimum compiler, Rust 1.88.0:

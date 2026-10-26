@@ -9,6 +9,7 @@ Snapshot: **26 October 2026**. The before/after PdfCraft checks were recorded on
 25 October. Sources:
 
 - [Cargo.toml](../../Cargo.toml): zero runtime dependencies.
+- [Recovery example](../../examples/retry_command.rs): 8 host-model tests; not consumer UI tests.
 - [Lifecycle tests](../../tests/lifecycle.rs) and [doctest](../../src/lib.rs): 16 + 1.
   The clone-count test covers 999 proposal/check pairs, one construction clone,
   one additional Reset clone, and no finish clone. It does not count caller work.
