@@ -1,0 +1,46 @@
+{
+  "recorded_date": "2026-10-27",
+  "timezone": "Europe/Kyiv",
+  "status": "published",
+  "runtime_dependencies": 0,
+  "license": "MIT OR Apache-2.0",
+  "scope": "Package and installation evidence; no claim of upstream adoption or application performance.",
+  "package": "edit-session",
+  "version": "0.1.0-alpha.4",
+  "source_commit": "621ece8c2a969c47927fecbff80f94ac9adfa618",
+  "tag": "v0.1.0-alpha.4",
+  "registry": "https://crates.io/crates/edit-session/0.1.0-alpha.4",
+  "registry_metadata": "https://crates.io/api/v1/crates/edit-session/0.1.0-alpha.4",
+  "published_at_utc": "2026-10-26T22:04:03.706343Z",
+  "tag_ci": "https://github.com/PerchAnton/edit-session/actions/runs/40407939344",
+  "package_verification": "https://github.com/PerchAnton/edit-session/actions/runs/40407143783",
+  "tests": {
+    "lifecycle": 16,
+    "recovery_example": 8,
+    "compile_fail_doctest": 1
+  },
+  "minimum_rust": "1.88",
+  "installation": {
+    "system": "macOS arm64",
+    "rust": "1.88.0",
+    "fresh_project": true,
+    "fresh_cargo_cache": true,
+    "dependency_source": "registry+https://github.com/rust-lang/crates.io-index",
+    "checks": [
+      "exact prerelease download and compile",
+      "commit before/after values",
+      "reset produces no-op",
+      "stale context rejected",
+      "zero runtime dependencies",
+      "download checksum equals uploaded archive and verified CI package"
+    ]
+  },
+  "files": [
+    {
+      "name": "edit-session-0.1.0-alpha.4.crate",
+      "bytes": 35058,
+      "sha256": "a97757e1d66f678e3c49c5ba0e6dd915a821fb55ed9707b0d55b4d2b108fcbd0",
+      "url": "https://crates.io/api/v1/crates/edit-session/0.1.0-alpha.4/download"
+    }
+  ]
+}
