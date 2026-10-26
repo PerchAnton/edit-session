@@ -120,6 +120,11 @@ sequence and shared report help your consumer. The [API contracts](src/lib.rs) a
 
 ## Use from another project
 
+**Crates.io candidate: `0.1.0-alpha.4` (not published yet).** After publication,
+use `edit-session = "=0.1.0-alpha.4"` in `[dependencies]` and commit `Cargo.lock`.
+The [publishing guide](docs/RELEASING.md#registry-publication) covers the first upload
+and later Trusted Publishing. Until then, use the existing Git release below.
+
 Add this entry to your crate's `[dependencies]` to use the published alpha 3 at its fixed release commit:
 
 ```toml
