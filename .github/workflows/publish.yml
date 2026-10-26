@@ -40,6 +40,7 @@ jobs:
       - run: cargo +1.88.0 fmt --check
       - run: cargo +1.88.0 clippy --locked --all-targets -- -D warnings
       - run: cargo +1.88.0 publish --dry-run --locked --registry crates-io
+      - run: cargo +1.88.0 package --locked --registry crates-io
       - name: Check the packaged tests and record the archive
         run: |
           mkdir packaged
@@ -79,6 +80,7 @@ jobs:
       - name: Recheck the archive before requesting a publish token
         run: |
           cargo +1.88.0 publish --dry-run --locked --registry crates-io
+          cargo +1.88.0 package --locked --registry crates-io
           sha256sum --check verified/SHA256SUMS
       - uses: rust-lang/crates-io-auth-action@3268eb413133e2960fa4ae0e963ca76380c54cd9 # v1.0.6
         id: auth

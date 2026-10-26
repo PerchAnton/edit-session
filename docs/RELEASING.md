@@ -14,7 +14,8 @@ registry in its manifest; this does not publish anything.
 - Alpha releases are experimental. Public types, methods, trait bounds and behavior
   may change between releases, even within `0.1.0`. Alpha.3 matching alpha.2 does not
   promise compatibility with every future alpha.
-- Pin a full Git revision (or an exact crate version once published) and keep the application's lockfile. Before upgrading,
+- Pin a full Git revision (or an exact crate version once published) and keep the
+  application's lockfile. Before upgrading,
   read the [changelog](../CHANGELOG.md) and run the host's draft, stale-context,
   no-op and command-retry tests. Library tests do not replace those integration tests.
 - Breaking changes, including a raised minimum Rust version, must be called out
@@ -36,9 +37,12 @@ cargo fmt --check
 cargo clippy --locked --all-targets -- -D warnings
 cargo package --locked --list
 cargo publish --dry-run --locked --registry crates-io
+cargo package --locked --registry crates-io
 ```
 
 Run these from a clean checkout. `cargo package` verifies the extracted crate builds.
+It also leaves an archive at the documented path; `cargo publish --dry-run` may keep
+its intermediate archive elsewhere, depending on the Cargo version.
 The archive includes sources, licenses, tests, examples and their documentation. CI
 checks the source and example on Rust 1.88 and stable. To validate packaged tests too,
 unpack the new `target/package/edit-session-<version>.crate` into a temporary directory
