@@ -1,12 +1,34 @@
 # edit-session
 
-**Experimental, 0.1.0-alpha.2.** An independent library maintained by
-[PerchAnton](https://github.com/PerchAnton). Available as a Git dependency; not published to
-crates.io or adopted by upstream PhotoCraft/PdfCraft.
+Draft editing with document, target and revision checks. A standalone Rust library;
+the separate [interaction-check](https://github.com/PerchAnton/interaction-check) tool is
+an optional way to test consumer workflows, not a dependency of this crate.
 
-A small Rust library for the lifecycle of an edit: begin, preview, reject invalid input,
-cancel, and produce a single change for the host to commit. The intended first consumers are
-PhotoCraft and PdfCraft. It has no dependencies and uses `no_std`.
+[![CI](https://github.com/PerchAnton/edit-session/actions/workflows/ci.yml/badge.svg?branch=main&event=push)](https://github.com/PerchAnton/edit-session/actions/workflows/ci.yml)
+
+**[Get started](#use-from-another-project)** · **[Evidence and trade-offs](docs/ADOPTION.md)** · **[API source](src/lib.rs)** · **[MIT OR Apache-2.0](#license)**
+
+![edit-session evidence: zero runtime dependencies; 16 lifecycle tests and one compile-fail doctest; 999 proposal/check pairs with no additional library-triggered clones. Two proposed PdfCraft regression checks improve from zero of two to two of two passing; the integration adds 217 production UI lines.](docs/assets/overview.svg)
+
+### The numbers behind the overview
+
+Evidence snapshot: **26 October 2026**. The CI badge is live; the graphic and counts are
+dated measurements. Each figure has a source and a defined scope.
+
+| Measure | Recorded result | Source and scope |
+| --- | --- | --- |
+| Runtime dependencies | **0** | [Manifest](Cargo.toml); `no_std`, unsafe code forbidden |
+| Library checks | **16 + 1 pass** | [16 lifecycle tests](tests/lifecycle.rs) + [1 compile-fail doctest](src/lib.rs); CI checks Rust 1.88 and stable |
+| Proposed PdfCraft regression checks | **0/2 → 2/2 pass** | [Two stale-draft workflows](docs/ADOPTION.md#a-demonstrated-failure-in-a-real-consumer), recorded 25 October; results cover the complete consumer patch |
+| Proposal/check loop | **999 pairs; 0 additional clones** | [Instrumented test](tests/lifecycle.rs); one clone at construction, one more on Reset; caller work excluded |
+| Integration cost | **+217 production UI lines** | [267 added / 50 removed](docs/ADOPTION.md#count-the-cost-as-well); no total-code or speed improvement is claimed |
+
+**Experimental, 0.1.0-alpha.2.** Maintained by [PerchAnton](https://github.com/PerchAnton).
+Available as a Git dependency; not published to crates.io. PhotoCraft and PdfCraft
+integrations are proposed and await upstream approval.
+
+Begin an edit, preview values, reject invalid input, cancel, and produce a single change
+for the host to commit. The crate has no dependencies and uses `no_std`.
 
 The host keeps its renderer, numeric parser, units, command dispatch and undo history.
 `edit-session` holds small draft parameters and a context supplied by the host. It neither
