@@ -2,12 +2,13 @@
 
 ## Published prerelease
 
-**[v0.1.0-alpha.3](https://github.com/PerchAnton/edit-session/releases/tag/v0.1.0-alpha.3)**
-was published on **26 October 2026**, with a source `.crate` archive and SHA-256
-checksums. Its public library API and behavior are unchanged from alpha.2; it adds
-the tested recovery example, documentation and package verification. The crate is
-not published on crates.io. The separate alpha.4 candidate enables the `crates-io`
-registry in its manifest; this does not publish anything.
+**[0.1.0-alpha.4 on crates.io](https://crates.io/crates/edit-session/0.1.0-alpha.4)**
+was published on **27 October 2026 (Europe/Kyiv; 26 October UTC)**. Its public API,
+behavior, Rust 1.88 minimum and zero runtime dependencies are unchanged from alpha.3.
+A fresh consumer downloaded it from the registry and checked commit, no-op and
+stale-context behavior. The archive hash matches the upload and release CI artifact.
+[Evidence](evidence/release-alpha4.json) · [Installation](../README.md#use-from-another-project).
+The previous alpha.3 GitHub prerelease remains unchanged.
 
 ## Alpha compatibility
 
@@ -55,18 +56,21 @@ Do not present an alpha release as the latest stable release.
 
 ## Registry publication
 
-### Prepared candidate
+### Published version
 
-`0.1.0-alpha.4` is prepared, **not published**. The API, behavior, Rust 1.88 minimum
+`0.1.0-alpha.4` is **published on crates.io**. The API, behavior, Rust 1.88 minimum
 and runtime dependencies are unchanged. Package metadata/docs change, so the candidate
 uses a new version; alpha.3 tags and archives stay untouched. `publish = ["crates-io"]`
 limits the registry target. `PACKAGE.md` is the registry landing page and uses absolute
 links so it works outside GitHub.
 
-The public crates.io API returned HTTP 404 for `edit-session` on 26 October 2026.
-This does not reserve the name or guarantee acceptance; check it again before upload.
+The registry lists `PerchAnton` as the owner. This version cannot be overwritten;
+prepare a new version for any future package change.
 
-### First upload: owner action
+### First upload: completed
+
+Alpha.4 was uploaded with the owner's scoped bootstrap token using Cargo 1.88.
+The procedure below is retained for reference; do not upload this version again.
 
 Crates.io currently requires an API token for a crate's **first** publication. Trusted
 Publishing can only be configured after the crate exists. There is no token in this
@@ -128,7 +132,7 @@ edit-session = "=0.1.0-alpha.4"
 
 Run `cargo check`, confirm `Cargo.lock` names the crates.io source (not a path/Git
 override), and check the [API documentation](https://docs.rs/edit-session/0.1.0-alpha.4/).
-Only then mark the README/changelog as published and add registry badges. Never
+Only then mark the README/changelog as published. Never
 overwrite a published version; fixes require a new version.
 
 Reference: [Cargo's publishing guide](https://doc.rust-lang.org/cargo/reference/publishing.html).

@@ -1,6 +1,11 @@
 # Changelog
 
-## 0.1.0-alpha.4 — unpublished candidate
+## 0.1.0-alpha.4
+
+Published to [crates.io](https://crates.io/crates/edit-session/0.1.0-alpha.4) on
+27 October 2026 (Europe/Kyiv; 26 October UTC). A fresh Rust 1.88 consumer installed
+the crate from the registry and checked commit, no-op and stale-context behavior.
+[Evidence and archive hash](docs/evidence/release-alpha4.json).
 
 - Prepare crates.io publication with an explicit registry allowlist, a package
   landing page, dry-run CI and a manual workflow for later Trusted Publishing.

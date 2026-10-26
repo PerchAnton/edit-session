@@ -10,21 +10,23 @@ an optional way to test consumer workflows, not a dependency of this crate.
 
 ## Current prerelease
 
-**[v0.1.0-alpha.3](https://github.com/PerchAnton/edit-session/releases/tag/v0.1.0-alpha.3) · released 26 October 2026 · Rust 1.88+**
+**[0.1.0-alpha.4 on crates.io](https://crates.io/crates/edit-session/0.1.0-alpha.4) · published 27 October 2026 (Europe/Kyiv) · Rust 1.88+**
 
-**[Download the source crate](https://github.com/PerchAnton/edit-session/releases/download/v0.1.0-alpha.3/edit-session-0.1.0-alpha.3.crate)** · [SHA-256 checksums](https://github.com/PerchAnton/edit-session/releases/download/v0.1.0-alpha.3/SHA256SUMS) · [Changelog](CHANGELOG.md) · [Use as a dependency](#use-from-another-project)
+**[API documentation](https://docs.rs/edit-session/0.1.0-alpha.4/edit_session/)** · [Download the crate](https://crates.io/api/v1/crates/edit-session/0.1.0-alpha.4/download) · [SHA-256 and installation evidence](docs/evidence/release-alpha4.json) · [Changelog](CHANGELOG.md) · [Use as a dependency](#use-from-another-project)
 
-![edit-session alpha 3, released 26 October 2026: 0 runtime dependencies, 25 scoped checks and a 29.4 KiB source archive. Check live state, attempt the host command, retain fields and draft on rejection, and close on success.](docs/assets/release.svg)
+![edit-session alpha 4, published on crates.io 27 October 2026: 0 runtime dependencies, 25 scoped checks and a 34.2 KiB source archive. Check live state, attempt the host command, retain fields and draft on rejection, and close on success.](docs/assets/release.svg)
 
 Release snapshot: **16 lifecycle tests + 8 host-example tests + 1 doctest**,
-**0 runtime dependencies**, **29.4 KiB source crate (30,112 bytes)**.
-[Exact file, hash and release CI](docs/evidence/release-alpha3.json). The example tests
+**0 runtime dependencies**, **34.2 KiB source crate (35,058 bytes)**.
+[Exact file, hash, release CI and clean installation](docs/evidence/release-alpha4.json). The example tests
 model host recovery; they are separate from real application UI regressions. Package
 size describes the download. The library API is unchanged from alpha.2.
 
-This GitHub prerelease is available as a source archive or fixed Git dependency;
-it is not published on crates.io. The CI badge above tracks current main, while
-the release snapshot stays tied to its tagged commit.
+The crate was downloaded from crates.io into a fresh Cargo cache and built with
+Rust 1.88; commit, no-op and stale-context behavior were checked. The CI badge above
+tracks current main, while release facts stay tied to the tagged commit. The
+[previous GitHub release](https://github.com/PerchAnton/edit-session/releases/tag/v0.1.0-alpha.3)
+remains available.
 
 Trying the alpha? [Report a bug](https://github.com/PerchAnton/edit-session/issues/new?template=bug_report.yml)
 with your revision and a short sequence of calls, or read the [alpha compatibility policy](docs/RELEASING.md#alpha-compatibility).
@@ -40,7 +42,7 @@ correction, Cancel, preserved Redo and duplicate confirmation.
 From a checkout of this release:
 
 ```sh
-git clone --branch v0.1.0-alpha.3 --depth 1 https://github.com/PerchAnton/edit-session.git
+git clone --branch v0.1.0-alpha.4 --depth 1 https://github.com/PerchAnton/edit-session.git
 cd edit-session
 cargo run --locked --example retry_command
 cargo test --locked --example retry_command
@@ -71,8 +73,8 @@ dated measurements. Each figure has a source and a defined scope.
 | Proposal/check loop | **999 pairs; 0 additional clones** | [Instrumented test](tests/lifecycle.rs); one clone at construction, one more on Reset; caller work excluded |
 | Integration cost | **+217 production UI lines** | [267 added / 50 removed](docs/ADOPTION.md#count-the-cost-as-well); no total-code or speed improvement is claimed |
 
-**Experimental, 0.1.0-alpha.3.** Maintained by [PerchAnton](https://github.com/PerchAnton).
-Available as a Git dependency; not published to crates.io. PhotoCraft and PdfCraft
+**Experimental, 0.1.0-alpha.4.** Maintained by [PerchAnton](https://github.com/PerchAnton).
+Available on crates.io and as a Git dependency. PhotoCraft and PdfCraft
 integrations are proposed and await upstream approval.
 
 Begin an edit, preview values, reject invalid input, cancel, and produce a single change
@@ -120,18 +122,15 @@ sequence and shared report help your consumer. The [API contracts](src/lib.rs) a
 
 ## Use from another project
 
-**Crates.io candidate: `0.1.0-alpha.4` (not published yet).** After publication,
-use `edit-session = "=0.1.0-alpha.4"` in `[dependencies]` and commit `Cargo.lock`.
-The [publishing guide](docs/RELEASING.md#registry-publication) covers the first upload
-and later Trusted Publishing. Until then, use the existing Git release below.
-
-Add this entry to your crate's `[dependencies]` to use the published alpha 3 at its fixed release commit:
+Add this exact prerelease to your crate's `[dependencies]`:
 
 ```toml
-edit-session = { git = "https://github.com/PerchAnton/edit-session", rev = "968ebd2f9a9b04c068b34a3fba42c246261380b7" }
+edit-session = "=0.1.0-alpha.4"
 ```
 
-Commit the resulting `Cargo.lock`. The companion
+Commit the resulting `Cargo.lock`. For a Git dependency, the same release is pinned
+at revision `621ece8c2a969c47927fecbff80f94ac9adfa618`.
+The companion
 [interaction-check](https://github.com/PerchAnton/interaction-check) project replays semantic
 scenarios against adapters using this library.
 
