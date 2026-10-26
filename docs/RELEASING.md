@@ -37,7 +37,7 @@ cargo fmt --check
 cargo clippy --locked --all-targets -- -D warnings
 cargo package --locked --list
 cargo publish --dry-run --locked --registry crates-io
-cargo package --locked --registry crates-io
+cargo package --locked
 ```
 
 Run these from a clean checkout. `cargo package` verifies the extracted crate builds.
