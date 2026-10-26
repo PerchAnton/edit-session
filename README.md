@@ -26,6 +26,9 @@ This GitHub prerelease is available as a source archive or fixed Git dependency;
 it is not published on crates.io. The CI badge above tracks current main, while
 the release snapshot stays tied to its tagged commit.
 
+Trying the alpha? [Report a bug](https://github.com/PerchAnton/edit-session/issues/new?template=bug_report.yml)
+with your revision and a short sequence of calls, or read the [alpha compatibility policy](docs/RELEASING.md#alpha-compatibility).
+
 ## Retry after a rejected command
 
 [Run the recovery example](docs/RECOVERY.md): it keeps the draft and raw fields open
