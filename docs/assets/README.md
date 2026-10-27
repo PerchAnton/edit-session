@@ -1,5 +1,21 @@
 # README overview asset
 
+## Executable context walkthrough
+
+`context-walkthrough.svg` is generated from the real output of
+[the Rust example](../../examples/context_walkthrough.rs), recorded on 27 October
+2026 in [JSON](../evidence/context-walkthrough.json). The example asserts that a host
+edit, Undo and Reset leave an old draft stale. It is a synchronous teaching model,
+not an additional application regression or a performance measurement.
+
+Build with `cargo build --locked --example context_walkthrough`, then run
+`python tools/context_evidence.py` from the repository root. Add `--check` to verify
+the saved output, LF-normalized source hashes and SVG without rewriting them.
+The existing Rust 1.88/stable CI matrix runs this check. See the
+[walkthrough](../CONTEXT_WALKTHROUGH.md) for responsibilities and reproduction.
+
+## Earlier measured overview
+
 `overview.svg` is an editable, self-contained vector graphic. It uses system fonts,
 explicit light-background colors, a title and a description, with no scripts, external
 fonts, images or trackers. The repository README repeats its measurements as accessible

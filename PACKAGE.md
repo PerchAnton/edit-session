@@ -45,6 +45,7 @@ must retain the draft for retry, use the borrowed-preview/check pattern in the
 Check the live value and context again on every attempt.
 
 - [API source and contracts](https://github.com/PerchAnton/edit-session/blob/main/src/lib.rs)
+- [Runnable example: Undo restores a value but leaves an old draft stale](https://github.com/PerchAnton/edit-session/blob/main/docs/CONTEXT_WALKTHROUGH.md)
 - [Changelog](https://github.com/PerchAnton/edit-session/blob/main/CHANGELOG.md)
 - [Integration evidence and limits](https://github.com/PerchAnton/edit-session/blob/main/docs/ADOPTION.md)
 - [Report a bug](https://github.com/PerchAnton/edit-session/issues/new?template=bug_report.yml)

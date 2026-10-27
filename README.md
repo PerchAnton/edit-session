@@ -1,18 +1,54 @@
 # edit-session
 
-Draft editing with document, target and revision checks. A standalone Rust library;
-the separate [interaction-check](https://github.com/PerchAnton/interaction-check) tool is
-an optional way to test consumer workflows, not a dependency of this crate.
+Keep an editable draft separate from live data, then check that its document, target
+and revision are still current before the host applies a change. A standalone Rust
+library: `no_std`, zero runtime dependencies, Rust 1.88+.
 
 [![CI](https://github.com/PerchAnton/edit-session/actions/workflows/ci.yml/badge.svg?branch=main&event=push)](https://github.com/PerchAnton/edit-session/actions/workflows/ci.yml)
 
-**[Download](#current-prerelease)** · **[Try recovery](#retry-after-a-rejected-command)** · **[Use the library](#use-from-another-project)** · **[Evidence](#evidence-and-trade-offs)** · **[License](#license)**
+**[First example](#same-value-different-edit)** · **[Try recovery](#retry-after-a-rejected-command)** · **[Install](#use-from-another-project)** · **[Evidence](#evidence-and-trade-offs)** · **[License](#license)**
+
+## Same value, different edit
+
+![An executable example: an old draft starts at revision 42. Another edit changes the value from 100 to 120; Undo restores 100 at revision 44. The old draft remains stale, including after Reset.](docs/assets/context-walkthrough.svg)
+
+From a checkout of this repository, run:
+
+```sh
+cargo run --locked --example context_walkthrough
+```
+
+The example prints four states and asserts the actual library results. A value-only
+comparison would accept the restored value after Undo. The host-supplied revision
+still differs, so `check` and `finish` return `ContextChanged`. **Reset changes the
+preview; it does not rebase an old draft onto the current document.**
+
+This is an original synchronous teaching model, verified **27 October 2026**, not a
+new application regression or a benchmark. The diagram is generated from its output
+and checked in CI. [Walkthrough and host responsibilities](docs/CONTEXT_WALKTHROUGH.md)
+· [Example source](examples/context_walkthrough.rs) · [Raw evidence](docs/evidence/context-walkthrough.json).
+
+| Your situation | Reasonable choice |
+| --- | --- |
+| A small dialog already has correct draft logic | Keep the local helper unless a concrete gap justifies a dependency |
+| Several consumers need the same draft validity contract | Evaluate this library against their native regression tests |
+| The host command can fail and the user must retry | Use the [borrowed-preview recovery pattern](docs/RECOVERY.md); retain fields until the command succeeds |
+| You need widgets, rendering, Undo history or transaction rollback | Those remain responsibilities of the host application |
+
+The host supplies stable identities, advances revisions, and keeps the check and
+command on the same serialized edit path. A correct local helper can provide the
+same protection; this example does not claim less code or faster execution.
+The separate [interaction-check](https://github.com/PerchAnton/interaction-check)
+development tool is optional. Neither project depends on the other.
 
 ## Current prerelease
 
 **[0.1.0-alpha.4 on crates.io](https://crates.io/crates/edit-session/0.1.0-alpha.4) · published 27 October 2026 (Europe/Kyiv) · Rust 1.88+**
 
 **[API documentation](https://docs.rs/edit-session/0.1.0-alpha.4/edit_session/)** · [Download the crate](https://crates.io/api/v1/crates/edit-session/0.1.0-alpha.4/download) · [SHA-256 and installation evidence](docs/evidence/release-alpha4.json) · [Changelog](CHANGELOG.md) · [Use as a dependency](#use-from-another-project)
+
+<details>
+<summary>Published package snapshot and verification</summary>
 
 ![edit-session alpha 4, published on crates.io 27 October 2026: 0 runtime dependencies, 25 scoped checks and a 34.2 KiB source archive. Check live state, attempt the host command, retain fields and draft on rejection, and close on success.](docs/assets/release.svg)
 
@@ -27,6 +63,8 @@ Rust 1.88; commit, no-op and stale-context behavior were checked. The CI badge a
 tracks current main, while release facts stay tied to the tagged commit. The
 [previous GitHub release](https://github.com/PerchAnton/edit-session/releases/tag/v0.1.0-alpha.3)
 remains available.
+
+</details>
 
 Trying the alpha? [Report a bug](https://github.com/PerchAnton/edit-session/issues/new?template=bug_report.yml)
 with your revision and a short sequence of calls, or read the [alpha compatibility policy](docs/RELEASING.md#alpha-compatibility).

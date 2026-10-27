@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+- Add a runnable context walkthrough: a host edit followed by Undo restores the
+  value but invalidates an old draft; Reset does not rebase its captured context.
+- Generate a front-page diagram from the example's output and source hashes;
+  verify both on Rust 1.88 and stable in CI. Include the renderer in source packages.
+- Put concrete behavior, local-helper trade-offs and host responsibilities first in
+  the README. Public API, runtime behavior and published versions are unchanged.
+
 ## 0.1.0-alpha.4
 
 Published to [crates.io](https://crates.io/crates/edit-session/0.1.0-alpha.4) on
