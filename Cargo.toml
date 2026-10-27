@@ -10,7 +10,7 @@ readme = "PACKAGE.md"
 publish = ["crates-io"]
 keywords = ["editing", "draft", "validation", "undo", "no-std"]
 categories = ["no-std", "gui"]
-include = ["src/**", "tests/**", "examples/**", "docs/**", "README.md", "PACKAGE.md", "CHANGELOG.md", "LICENSE-*", "Cargo.toml", "Cargo.lock"]
+include = ["src/**", "tests/**", "examples/**", "docs/**", "tools/context_evidence.py", "README.md", "PACKAGE.md", "CHANGELOG.md", "LICENSE-*", "Cargo.toml", "Cargo.lock"]
 
 [[example]]
 name = "retry_command"

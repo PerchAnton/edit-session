@@ -1,0 +1,46 @@
+{
+  "recorded_date": "2026-10-27",
+  "scope": "Original synchronous teaching model; actual edit-session API, no GUI or upstream test claim",
+  "source_hash_format": "SHA-256 of UTF-8 text with LF line endings",
+  "source_files": {
+    "src/lib.rs": "878d877fc7c8874230c93aafd8321613b3c02b4dcf94865f2629e21fa088a74c",
+    "examples/context_walkthrough.rs": "4a8fd1642ba38900d757e010e2ce6287e5272c296207a7381e0e4d24e95c307c"
+  },
+  "result": {
+    "rows": [
+      {
+        "action": "Open draft",
+        "live": 100,
+        "revision": 42,
+        "preview": 75,
+        "value_matches_original": true,
+        "check": "Ready"
+      },
+      {
+        "action": "Host edits",
+        "live": 120,
+        "revision": 43,
+        "preview": 75,
+        "value_matches_original": false,
+        "check": "ContextChanged"
+      },
+      {
+        "action": "Host undoes",
+        "live": 100,
+        "revision": 44,
+        "preview": 75,
+        "value_matches_original": true,
+        "check": "ContextChanged"
+      },
+      {
+        "action": "Reset draft",
+        "live": 100,
+        "revision": 44,
+        "preview": 100,
+        "value_matches_original": true,
+        "check": "ContextChanged"
+      }
+    ],
+    "finish": "ContextChanged"
+  }
+}

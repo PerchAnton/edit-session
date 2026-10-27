@@ -13,6 +13,8 @@ jobs:
       - run: rustup toolchain install ${{ matrix.rust }} --profile minimal --component rustfmt,clippy
       - run: cargo +${{ matrix.rust }} test --locked
       - run: cargo +${{ matrix.rust }} run --locked --example retry_command
+      - run: cargo +${{ matrix.rust }} run --locked --example context_walkthrough
+      - run: python3 tools/context_evidence.py --check
       - run: cargo +${{ matrix.rust }} fmt --check
       - run: cargo +${{ matrix.rust }} clippy --locked --all-targets -- -D warnings
       - run: cargo +${{ matrix.rust }} publish --dry-run --locked --registry crates-io

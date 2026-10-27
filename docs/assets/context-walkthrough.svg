@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="454" viewBox="0 0 1040 454" role="img" aria-labelledby="title description">
+<title id="title">Undo restores a value, not the validity of an old draft</title>
+<desc id="description">The executable Rust example opens a draft at value 100, revision 42, with preview 75. A host edit changes the value to 120 at revision 43. Undo restores 100 at revision 44. The value matches the original again, but edit-session rejects the stale context. Reset restores preview 100 without rebasing the captured revision. Finish returns ContextChanged.</desc>
+<rect width="1040" height="454" rx="20" fill="#f4f7fb"/>
+<path d="M20 0H1020Q1040 0 1040 20V116H0V20Q0 0 20 0Z" fill="#152238"/>
+<g font-family="Arial, Helvetica, sans-serif">
+<text x="32" y="34" font-size="14" fill="#c4cede" font-weight="700">EDIT-SESSION / RUNNABLE CONTEXT WALKTHROUGH</text>
+<text x="32" y="75" font-size="30" fill="#fff" font-weight="700">Undo restores the value. The old draft stays stale.</text>
+<text x="32" y="101" font-size="16" fill="#dae3f1">The host supplies a revision that changes on edits, Undo and Redo.</text>
+
+<rect x="32" y="142" width="232" height="202" rx="14" fill="#eaf6f3" stroke="#dce3ec"/>
+<text x="52" y="173" font-size="18" fill="#172438" font-weight="700">1. Open draft</text>
+<text x="52" y="208" font-size="15" fill="#526176">LIVE VALUE</text>
+<text x="52" y="249" font-size="36" fill="#172438" font-weight="700">100</text>
+<text x="52" y="279" font-size="16" fill="#526176">Revision 42 · preview 75</text>
+<text x="52" y="318" font-size="17" fill="#087c79" font-weight="700">Ready</text>
+<rect x="280" y="142" width="232" height="202" rx="14" fill="#fff1e9" stroke="#dce3ec"/>
+<text x="300" y="173" font-size="18" fill="#172438" font-weight="700">2. Host edits</text>
+<text x="300" y="208" font-size="15" fill="#526176">LIVE VALUE</text>
+<text x="300" y="249" font-size="36" fill="#172438" font-weight="700">120</text>
+<text x="300" y="279" font-size="16" fill="#526176">Revision 43 · preview 75</text>
+<text x="300" y="318" font-size="17" fill="#9a461b" font-weight="700">ContextChanged</text>
+<rect x="528" y="142" width="232" height="202" rx="14" fill="#fff1e9" stroke="#dce3ec"/>
+<text x="548" y="173" font-size="18" fill="#172438" font-weight="700">3. Host undoes</text>
+<text x="548" y="208" font-size="15" fill="#526176">LIVE VALUE</text>
+<text x="548" y="249" font-size="36" fill="#172438" font-weight="700">100</text>
+<text x="548" y="279" font-size="16" fill="#526176">Revision 44 · preview 75</text>
+<text x="548" y="318" font-size="17" fill="#9a461b" font-weight="700">ContextChanged</text>
+<rect x="776" y="142" width="232" height="202" rx="14" fill="#fff1e9" stroke="#dce3ec"/>
+<text x="796" y="173" font-size="18" fill="#172438" font-weight="700">4. Reset draft</text>
+<text x="796" y="208" font-size="15" fill="#526176">LIVE VALUE</text>
+<text x="796" y="249" font-size="36" fill="#172438" font-weight="700">100</text>
+<text x="796" y="279" font-size="16" fill="#526176">Revision 44 · preview 100</text>
+<text x="796" y="318" font-size="17" fill="#9a461b" font-weight="700">ContextChanged</text>
+<text x="32" y="379" font-size="19" fill="#172438" font-weight="700">Same value: 100. Different revision: 42 → 44. finish() returns ContextChanged.</text>
+<text x="32" y="409" font-size="16" fill="#526176">The host must not apply the stale draft. Reset is not a rebase, a rollback or a freshness override.</text>
+<text x="32" y="435" font-size="14" fill="#526176">Example output · verified 2026-10-27 · no GUI, automatic locking or upstream adoption claim.</text>
+</g></svg>
