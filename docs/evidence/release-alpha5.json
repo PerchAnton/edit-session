@@ -1,0 +1,53 @@
+{
+  "recorded_date": "2026-10-27",
+  "timezone": "Europe/Kyiv",
+  "status": "published",
+  "package": "edit-session",
+  "version": "0.1.0-alpha.5",
+  "tag": "v0.1.0-alpha.5",
+  "source_commit": "6bbf13256a8240076ec4d6f8c4ea13477a7c5876",
+  "runtime_dependencies": 0,
+  "license": "MIT OR Apache-2.0",
+  "minimum_rust": "1.88",
+  "scope": "Examples and documentation release; runtime API and behavior unchanged. No upstream adoption or performance claim.",
+  "registry": "https://crates.io/crates/edit-session/0.1.0-alpha.5",
+  "registry_metadata": "https://crates.io/api/v1/crates/edit-session/0.1.0-alpha.5",
+  "github_release": "https://github.com/PerchAnton/edit-session/releases/tag/v0.1.0-alpha.5",
+  "published_at_utc": "2026-10-27T06:58:11.228896Z",
+  "publish_workflow": "https://github.com/PerchAnton/edit-session/actions/runs/40463972786",
+  "release_commit_ci": "https://github.com/PerchAnton/edit-session/actions/runs/40463851643",
+  "tests": {
+    "lifecycle": 16,
+    "recovery_example": 8,
+    "compile_fail_doctest": 1
+  },
+  "examples": [
+    "retry_command",
+    "context_walkthrough"
+  ],
+  "installation": {
+    "system": "macOS arm64",
+    "rust": "1.88.0",
+    "fresh_project": true,
+    "fresh_cargo_cache": true,
+    "dependency_source": "registry+https://github.com/rust-lang/crates.io-index",
+    "checks": [
+      "exact prerelease download and compile",
+      "commit before/after values",
+      "reset produces no-op",
+      "Undo to original value leaves old context stale",
+      "Reset does not rebase stale context",
+      "zero runtime dependencies and dual license",
+      "registry download equals verified CI archive byte for byte",
+      "versioned docs.rs API documentation available"
+    ]
+  },
+  "files": [
+    {
+      "name": "edit-session-0.1.0-alpha.5.crate",
+      "bytes": 42299,
+      "sha256": "e898a59ee22c0dd449a8e05d26de0354df39a3babacd9eaf4ba87742eb9747ea",
+      "url": "https://crates.io/api/v1/crates/edit-session/0.1.0-alpha.5/download"
+    }
+  ]
+}

@@ -1,21 +1,15 @@
 # Releases and alpha compatibility
 
-## Current candidate
-
-`0.1.0-alpha.5` packages the context walkthrough and feedback-driven documentation.
-Publication is pending. The public API, runtime behavior, Rust 1.88 minimum and zero
-runtime dependencies are unchanged. The release workflow runs both examples and
-checks the generated context diagram from the extracted crate before upload.
-
 ## Published prerelease
 
-**[0.1.0-alpha.4 on crates.io](https://crates.io/crates/edit-session/0.1.0-alpha.4)**
-was published on **27 October 2026 (Europe/Kyiv; 26 October UTC)**. Its public API,
-behavior, Rust 1.88 minimum and zero runtime dependencies are unchanged from alpha.3.
-A fresh consumer downloaded it from the registry and checked commit, no-op and
-stale-context behavior. The archive hash matches the upload and release CI artifact.
-[Evidence](evidence/release-alpha4.json) · [Installation](../README.md#use-from-another-project).
-The previous alpha.3 GitHub prerelease remains unchanged.
+**[0.1.0-alpha.5 on crates.io](https://crates.io/crates/edit-session/0.1.0-alpha.5)**
+was published on **27 October 2026 (Europe/Kyiv)** through Trusted Publishing.
+The [GitHub prerelease](https://github.com/PerchAnton/edit-session/releases/tag/v0.1.0-alpha.5)
+attaches the same verified source archive and its checksum. This release adds examples
+and documentation; public API, runtime behavior, Rust 1.88 and zero dependencies remain.
+A fresh consumer checked commit, no-op, Undo freshness and Reset. Both packaged examples
+and the generated context diagram pass. [Evidence](evidence/release-alpha5.json).
+Earlier alpha.4 registry files and alpha.3 GitHub assets remain unchanged.
 
 ## Alpha compatibility
 
@@ -67,11 +61,12 @@ Do not present an alpha release as the latest stable release.
 
 ### Published version
 
-`0.1.0-alpha.4` is **published on crates.io**. The API, behavior, Rust 1.88 minimum
-and runtime dependencies are unchanged. Package metadata/docs change, so the candidate
-uses a new version; alpha.3 tags and archives stay untouched. `publish = ["crates-io"]`
-limits the registry target. `PACKAGE.md` is the registry landing page and uses absolute
-links so it works outside GitHub.
+`0.1.0-alpha.5` is **published on crates.io** through
+[workflow 40463972786](https://github.com/PerchAnton/edit-session/actions/runs/40463972786).
+The API, behavior, Rust minimum and runtime dependencies are unchanged. The new version
+includes the added examples and documentation without replacing earlier archives.
+`publish = ["crates-io"]` limits the registry target. `PACKAGE.md` is the registry
+landing page and uses absolute links so it works outside GitHub.
 
 The registry lists `PerchAnton` as the owner. This version cannot be overwritten;
 prepare a new version for any future package change.
@@ -107,7 +102,8 @@ rehearsal. Do not run it merely to test credentials or reserve a name.
 
 ### Subsequent releases: Trusted Publishing
 
-In the published crate's **Settings → Trusted Publishing**, add:
+Trusted Publishing is configured and verified by the alpha.5 upload. Keep these
+identity fields unchanged:
 
 | Field | Value |
 | --- | --- |
@@ -116,8 +112,8 @@ In the published crate's **Settings → Trusted Publishing**, add:
 | Workflow filename | `publish.yml` |
 | Environment | `crates-io` |
 
-Create the `crates-io` GitHub environment, require owner approval and allow release
-tags (`v*`). These repository files do not configure the account or environment.
+The existing `crates-io` environment requires owner approval and allows release
+tags. These repository files do not configure the account or environment.
 The workflow uses the Rust project's OIDC action; no permanent CI token is needed.
 
 Run **Prepare or publish to crates.io** from `main` with `publish=false` (default)
@@ -136,11 +132,11 @@ Use a fresh consumer project and the exact prerelease dependency:
 
 ```toml
 [dependencies]
-edit-session = "=0.1.0-alpha.4"
+edit-session = "=0.1.0-alpha.5"
 ```
 
 Run `cargo check`, confirm `Cargo.lock` names the crates.io source (not a path/Git
-override), and check the [API documentation](https://docs.rs/edit-session/0.1.0-alpha.4/).
+override), and check the [API documentation](https://docs.rs/edit-session/0.1.0-alpha.5/).
 Only then mark the README/changelog as published. Never
 overwrite a published version; fixes require a new version.
 

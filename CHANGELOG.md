@@ -2,6 +2,10 @@
 
 ## 0.1.0-alpha.5
 
+Published on 27 October 2026 (Europe/Kyiv) to [crates.io](https://crates.io/crates/edit-session/0.1.0-alpha.5)
+and as a [GitHub prerelease](https://github.com/PerchAnton/edit-session/releases/tag/v0.1.0-alpha.5).
+Fresh installation, archive checksums and packaged examples verified. [Evidence](docs/evidence/release-alpha5.json).
+
 Examples and documentation release. Runtime behavior is unchanged.
 
 - Add a runnable context walkthrough: a host edit followed by Undo restores the
