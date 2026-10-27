@@ -1,5 +1,12 @@
 # Releases and alpha compatibility
 
+## Current candidate
+
+`0.1.0-alpha.5` packages the context walkthrough and feedback-driven documentation.
+Publication is pending. The public API, runtime behavior, Rust 1.88 minimum and zero
+runtime dependencies are unchanged. The release workflow runs both examples and
+checks the generated context diagram from the extracted crate before upload.
+
 ## Published prerelease
 
 **[0.1.0-alpha.4 on crates.io](https://crates.io/crates/edit-session/0.1.0-alpha.4)**
@@ -34,6 +41,8 @@ Update the version and changelog for the new candidate, then run:
 ```sh
 cargo test --locked
 cargo run --locked --example retry_command
+cargo run --locked --example context_walkthrough
+python3 tools/context_evidence.py --check
 cargo fmt --check
 cargo clippy --locked --all-targets -- -D warnings
 cargo package --locked --list

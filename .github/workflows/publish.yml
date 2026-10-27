@@ -37,6 +37,8 @@ jobs:
       - run: rustup toolchain install 1.88.0 --profile minimal --component rustfmt,clippy
       - run: cargo +1.88.0 test --locked
       - run: cargo +1.88.0 run --locked --example retry_command
+      - run: cargo +1.88.0 run --locked --example context_walkthrough
+      - run: python3 tools/context_evidence.py --check
       - run: cargo +1.88.0 fmt --check
       - run: cargo +1.88.0 clippy --locked --all-targets -- -D warnings
       - run: cargo +1.88.0 publish --dry-run --locked --registry crates-io
@@ -48,6 +50,8 @@ jobs:
           cd packaged/edit-session-*
           cargo +1.88.0 test --locked
           cargo +1.88.0 run --locked --example retry_command
+          cargo +1.88.0 run --locked --example context_walkthrough
+          python3 tools/context_evidence.py --check
           cd ../..
           sha256sum target/package/*.crate > SHA256SUMS
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
