@@ -13,7 +13,7 @@ Add a published copy of this prerelease to your dependencies:
 
 ```toml
 [dependencies]
-edit-session = "=0.1.0-alpha.4"
+edit-session = "=0.1.0-alpha.5"
 ```
 
 This is an experimental alpha. Pin an exact version and keep `Cargo.lock` for

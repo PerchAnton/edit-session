@@ -1,13 +1,17 @@
 # Changelog
 
-## Unreleased
+## 0.1.0-alpha.5
+
+Examples and documentation release. Runtime behavior is unchanged.
 
 - Add a runnable context walkthrough: a host edit followed by Undo restores the
   value but invalidates an old draft; Reset does not rebase its captured context.
 - Generate a front-page diagram from the example's output and source hashes;
   verify both on Rust 1.88 and stable in CI. Include the renderer in source packages.
 - Put concrete behavior, local-helper trade-offs and host responsibilities first in
-  the README. Public API, runtime behavior and published versions are unchanged.
+  the README. Verify the context walkthrough and diagram from the packaged crate
+  before upload. Public API, runtime behavior, Rust 1.88 minimum and dependencies
+  are unchanged; use a new package version for the added examples and documentation.
 
 ## 0.1.0-alpha.4
 
