@@ -86,3 +86,18 @@ PhotoCraft and PdfCraft are proposed consumers, not adopted dependencies. We hav
 demonstrated behavior protection in a consumer patch; we have not demonstrated lower
 total source size or faster editing. The next valuable milestone is a maintainer-reviewed
 workflow and ownership decision, not more adapters or a larger API.
+
+## Try a second dialog
+
+Pick two dialogs in the same editor that share a document revision but edit
+different fields. In each, type a draft, apply a change elsewhere, undo that
+change, then confirm the old draft. Record the resulting value and whether Redo
+still works. Use the same native assertions for both implementations.
+
+Start with the editor's smallest correct helper. On a separate branch try
+`edit-session`, keeping the same command dispatch and revision source. For the
+second dialog, record which checks you reused, which host-specific code you
+had to write and the production lines added or removed. Count tests separately.
+If both versions pass and the second dialog reuses as much with the local
+helper, keep the helper. A useful trial result is the pair of diffs and tests,
+including the cases where the crate added work.
