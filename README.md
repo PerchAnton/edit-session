@@ -42,6 +42,13 @@ and checked in CI. [Walkthrough and host responsibilities](docs/CONTEXT_WALKTHRO
 The host supplies stable identities, advances revisions, and keeps the check and
 command on the same serialized edit path. A correct local helper can provide the
 same protection; this example does not claim less code or faster execution.
+
+**Would this earn a place in your editor?** In a proposed PdfCraft fix, two native
+regressions went from 0/2 passing to 2/2. One protected a newer title and the other
+preserved Redo. The full patch added a net 217 production UI lines. If two dialogs
+in your editor have this problem, try a local helper and the crate against the
+same tests. [What to measure in the second dialog](docs/ADOPTION.md#try-a-second-dialog).
+
 The separate [interaction-check](https://github.com/PerchAnton/interaction-check)
 development tool is optional. Neither project depends on the other.
 
