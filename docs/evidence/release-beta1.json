@@ -1,0 +1,48 @@
+{
+  "checked_at": "2026-11-01T15:18:32.735656+02:00",
+  "version": "0.1.0-beta.1",
+  "commit": "e3da338fdfa15190f98111cb57f9b3f25c1c2f2f",
+  "tag": "v0.1.0-beta.1",
+  "registry": {
+    "version": "0.1.0-beta.1",
+    "sha256": "728d31d355327c086c172ac8927d9822375dae606b198b4784f7c05b80d0455e",
+    "url": "https://static.crates.io/crates/edit-session/edit-session-0.1.0-beta.1.crate",
+    "workflow_match": true,
+    "consumer_lock": {
+      "name": "edit-session",
+      "version": "0.1.0-beta.1",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "checksum": "728d31d355327c086c172ac8927d9822375dae606b198b4784f7c05b80d0455e"
+    }
+  },
+  "github_release": "https://github.com/PerchAnton/edit-session/releases/tag/v0.1.0-beta.1",
+  "prerelease": true,
+  "workflow": {
+    "url": "https://github.com/PerchAnton/edit-session/actions/runs/41309450079",
+    "conclusion": "success",
+    "head_sha": "e3da338fdfa15190f98111cb57f9b3f25c1c2f2f"
+  },
+  "github_assets": [
+    {
+      "name": "edit-session-0.1.0-beta.1.crate",
+      "sha256": "728d31d355327c086c172ac8927d9822375dae606b198b4784f7c05b80d0455e",
+      "bytes": 44723,
+      "url": "https://github.com/PerchAnton/edit-session/releases/download/v0.1.0-beta.1/edit-session-0.1.0-beta.1.crate"
+    },
+    {
+      "name": "SHA256SUMS",
+      "sha256": "bca6a218ef4ec2fa9b84bed3b86c94731693f42a557526d60db13d85b2dde8fd",
+      "bytes": 98,
+      "url": "https://github.com/PerchAnton/edit-session/releases/download/v0.1.0-beta.1/SHA256SUMS"
+    }
+  ],
+  "installed_checks": {
+    "toolchain": "Rust 1.88.0",
+    "source": "crates.io exact dependency, no path override",
+    "no_std_consumer": true,
+    "contract_tests": 3,
+    "lifecycle_tests": 16,
+    "result": "passed"
+  },
+  "limitations": "These checks validate the published package and documented examples, not external adoption or consumer source-policy approval. Release archives and tags remain immutable; this receipt is recorded after publication."
+}

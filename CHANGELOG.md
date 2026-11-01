@@ -1,6 +1,10 @@
 # Changelog
 
-## 0.1.0-beta.1 (candidate, not published)
+## 0.1.0-beta.1
+
+Published on 1 November 2026 (Europe/Kyiv) to [crates.io](https://crates.io/crates/edit-session/0.1.0-beta.1)
+and as a [GitHub prerelease](https://github.com/PerchAnton/edit-session/releases/tag/v0.1.0-beta.1).
+[Archive hashes and registry-consumer checks](docs/evidence/release-beta1.json).
 
 - Define the supported beta API, error precedence and migration boundary; retain Rust 1.88, no_std and zero dependencies.
 - Add downstream-style tests for minimal trait bounds and simultaneous conflicts. Runtime source is unchanged from alpha.5.
