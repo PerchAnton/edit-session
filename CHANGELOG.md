@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.0-beta.1 (candidate, not published)
+
+- Define the supported beta API, error precedence and migration boundary; retain Rust 1.88, no_std and zero dependencies.
+- Add downstream-style tests for minimal trait bounds and simultaneous conflicts. Runtime source is unchanged from alpha.5.
+- Separate source/workflow approval from package maturity; document what we can supply and what maintainers must decide.
+
 ## 0.1.0-alpha.5
 
 Published on 27 October 2026 (Europe/Kyiv) to [crates.io](https://crates.io/crates/edit-session/0.1.0-alpha.5)

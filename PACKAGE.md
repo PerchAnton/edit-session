@@ -1,5 +1,9 @@
 # edit-session
 
+**Beta candidate:** the checkout prepares `0.1.0-beta.1`; it is not published.
+The latest published package remains `0.1.0-alpha.5`. See the
+[compatibility boundary](docs/COMPATIBILITY.md) before upgrading.
+
 A small, toolkit-independent Rust library for preview, validation and commit
 lifecycles. **`no_std`, zero runtime dependencies, Rust 1.88+.** MIT OR Apache-2.0.
 
