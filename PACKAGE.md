@@ -1,8 +1,8 @@
 # edit-session
 
-**Beta candidate:** the checkout prepares `0.1.0-beta.1`; it is not published.
-The latest published package remains `0.1.0-alpha.5`. See the
-[compatibility boundary](docs/COMPATIBILITY.md) before upgrading.
+**Published beta:** `0.1.0-beta.1` is available on
+[crates.io](https://crates.io/crates/edit-session/0.1.0-beta.1), verified 1 November 2026
+(Europe/Kyiv). Read the [compatibility boundary](https://github.com/PerchAnton/edit-session/blob/main/docs/COMPATIBILITY.md) before upgrading.
 
 A small, toolkit-independent Rust library for preview, validation and commit
 lifecycles. **`no_std`, zero runtime dependencies, Rust 1.88+.** MIT OR Apache-2.0.
@@ -17,12 +17,12 @@ Add a published copy of this prerelease to your dependencies:
 
 ```toml
 [dependencies]
-edit-session = "=0.1.0-alpha.5"
+edit-session = "=0.1.0-beta.1"
 ```
 
-This is an experimental alpha. Pin an exact version and keep `Cargo.lock` for
+This is an experimental beta. Pin an exact version and keep `Cargo.lock` for
 applications. Read the
-[compatibility policy](https://github.com/PerchAnton/edit-session/blob/main/docs/RELEASING.md#alpha-compatibility)
+[compatibility policy](https://github.com/PerchAnton/edit-session/blob/main/docs/COMPATIBILITY.md)
 before upgrading. For other distribution options and current publication status,
 see the [project README](https://github.com/PerchAnton/edit-session#use-from-another-project).
 

@@ -1,8 +1,9 @@
 # Beta compatibility boundary
 
-`0.1.0-beta.1` is a release candidate, not a published or stable release. The last
-published version is `0.1.0-alpha.5`. No runtime implementation changes are needed
-for this candidate; the added checks make the intended consumer contract explicit.
+`0.1.0-beta.1` was published on 1 November 2026 (Europe/Kyiv); it remains a
+prerelease, not a stable 1.0 release. Runtime implementation is unchanged from
+`0.1.0-alpha.5`; the added checks make the intended consumer contract explicit.
+[Publication and registry checks](evidence/release-beta1.json).
 
 ## Supported surface
 
@@ -27,7 +28,7 @@ lock. An `Rc<RefCell<_>>` clone is not an independent snapshot.
 
 ## Upgrading and evidence
 
-Pin the exact prerelease (`=0.1.0-beta.1` once published). Re-run the host's native
+Pin the exact prerelease (`=0.1.0-beta.1`). Re-run the host's native
 regressions before changing the pin. The beta adds no fields to stored documents:
 sessions are in-memory state, not a serialization format. Error variants are for
 branching; Display/Debug prose and memory layout are not a machine protocol.
