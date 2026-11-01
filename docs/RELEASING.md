@@ -1,5 +1,10 @@
 # Releases and alpha compatibility
 
+The next candidate is `0.1.0-beta.1`. [Its compatibility contract](COMPATIBILITY.md)
+adds consumer tests without changing the runtime. Do not describe it as published
+until the existing exact-tag/archive and registry read-back gates below pass.
+The alpha history below describes already published versions.
+
 ## Published prerelease
 
 **[0.1.0-alpha.5 on crates.io](https://crates.io/crates/edit-session/0.1.0-alpha.5)**
