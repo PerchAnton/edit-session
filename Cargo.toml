@@ -1,6 +1,6 @@
 [package]
 name = "edit-session"
-version = "0.1.0-beta.1"
+version = "0.1.0-beta.2"
 edition = "2024"
 rust-version = "1.88"
 description = "Toolkit-independent preview, validation and commit lifecycle"
@@ -14,6 +14,10 @@ include = ["src/**", "tests/**", "examples/**", "docs/**", "tools/context_eviden
 
 [[example]]
 name = "retry_command"
+test = true
+
+[[example]]
+name = "helper_comparison"
 test = true
 
 [lints.rust]

@@ -101,3 +101,10 @@ had to write and the production lines added or removed. Count tests separately.
 If both versions pass and the second dialog reuses as much with the local
 helper, keep the helper. A useful trial result is the pair of diffs and tests,
 including the cases where the crate added work.
+
+## Source policy comes before a dependency trial
+
+See [dependency-source options and the executable local-helper comparison](source-policy.md).
+The same eight lifecycle scenarios run against both implementations, including Cancel,
+a changed object and edit/Undo with the original value. No library advantage or host
+approval follows from equivalent results.
