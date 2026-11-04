@@ -28,7 +28,7 @@ lock. An `Rc<RefCell<_>>` clone is not an independent snapshot.
 
 ## Upgrading and evidence
 
-Pin the exact prerelease (`=0.1.0-beta.1`). Re-run the host's native
+Pin the exact prerelease (`=0.1.0-beta.2`). Re-run the host's native
 regressions before changing the pin. The beta adds no fields to stored documents:
 sessions are in-memory state, not a serialization format. Error variants are for
 branching; Display/Debug prose and memory layout are not a machine protocol.

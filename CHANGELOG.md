@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.0-beta.2
+
+- Compare the crate and an in-tree helper on eight edit scenarios, including Cancel, Undo and changes to the target or revision. Run `cargo test --locked --example helper_comparison` for the executable checks.
+- Document dependency source choices for hosts with an approval policy. The host maintainers choose their source.
+
 ## 0.1.0-beta.1
 
 Published on 1 November 2026 (Europe/Kyiv) to [crates.io](https://crates.io/crates/edit-session/0.1.0-beta.1)
