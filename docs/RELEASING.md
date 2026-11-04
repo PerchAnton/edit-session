@@ -1,6 +1,10 @@
 # Releases and compatibility
 
-## Published beta
+## Current beta 0.1.0-beta.2
+
+Published on 5 November 2026 (Europe/Kyiv). [Package on crates.io](https://crates.io/crates/edit-session/0.1.0-beta.2) · [GitHub prerelease and checksums](https://github.com/PerchAnton/edit-session/releases/tag/v0.1.0-beta.2) · [Installation checks](evidence/release-beta2.json).
+
+## Previous beta.1
 
 **[0.1.0-beta.1 on crates.io](https://crates.io/crates/edit-session/0.1.0-beta.1)**
 was published on **1 November 2026 (Europe/Kyiv)** through

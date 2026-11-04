@@ -1,0 +1,27 @@
+{
+  "package": "edit-session",
+  "version": "0.1.0-beta.2",
+  "releaseCommit": "f9ff00cb18563f746f88a5234f2aa62bdbdde60b",
+  "verifiedAt": "2026-11-05T01:21:58.430618+02:00",
+  "registry": "crates.io",
+  "registryURL": "https://crates.io/crates/edit-session/0.1.0-beta.2",
+  "verifiedAssets": {
+    "edit-session-0.1.0-beta.2.crate": {
+      "sha256": "cf56e81974be8c9be571d195bcee509054737a080309db8d92a40c5f8cd78b33",
+      "bytes": 48978
+    }
+  },
+  "checks": {
+    "freshCratesIoInstall": true,
+    "consumer": "no_std",
+    "passedConsumerTests": [
+      "commit one edit",
+      "reject a stale revision"
+    ],
+    "packagedExample": "helper_comparison",
+    "comparisonScenarios": 8,
+    "runtimeDependencies": 0,
+    "msrv": "1.88"
+  },
+  "publishWorkflow": "https://github.com/PerchAnton/edit-session/actions/runs/41932060143"
+}

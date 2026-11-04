@@ -54,7 +54,7 @@ development tool is optional. Neither project depends on the other.
 
 **[0.1.0-beta.2 on crates.io](https://crates.io/crates/edit-session/0.1.0-beta.2) · Rust 1.88+**
 
-**[GitHub prerelease and checksums](https://github.com/PerchAnton/edit-session/releases/tag/v0.1.0-beta.2)** · **[API documentation](https://docs.rs/edit-session/0.1.0-beta.2/edit_session/)** · [Download the crate](https://crates.io/api/v1/crates/edit-session/0.1.0-beta.2/download) · [Beta.1 installation evidence](docs/evidence/release-beta1.json) · [Changelog](CHANGELOG.md) · [Use as a dependency](#use-from-another-project)
+**[GitHub prerelease and checksums](https://github.com/PerchAnton/edit-session/releases/tag/v0.1.0-beta.2)** · **[API documentation](https://docs.rs/edit-session/0.1.0-beta.2/edit_session/)** · [Download the crate](https://crates.io/api/v1/crates/edit-session/0.1.0-beta.2/download) · [Beta.2 installation evidence](docs/evidence/release-beta2.json) · [Changelog](CHANGELOG.md) · [Use as a dependency](#use-from-another-project)
 
 <details>
 <summary>Historical alpha.5 package snapshot and verification</summary>
