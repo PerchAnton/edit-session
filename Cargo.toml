@@ -16,6 +16,10 @@ include = ["src/**", "tests/**", "examples/**", "docs/**", "tools/context_eviden
 name = "retry_command"
 test = true
 
+[[example]]
+name = "helper_comparison"
+test = true
+
 [lints.rust]
 unsafe_code = "forbid"
 
