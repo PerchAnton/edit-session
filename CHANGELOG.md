@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.0
+
+- First non-prerelease, with an explicit 0.1.x patch compatibility and best-effort
+  support policy. Published status is recorded after registry verification.
+- The runtime, public types and minimal trait bounds are unchanged from beta.2.
+  No stored data or caller migration is required.
+
 ## 0.1.0-beta.2
 
 - Compare the crate and an in-tree helper on eight edit scenarios, including Cancel, Undo and changes to the target or revision. Run `cargo test --locked --example helper_comparison` for the executable checks.
