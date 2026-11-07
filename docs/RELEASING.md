@@ -1,8 +1,12 @@
 # Releases and compatibility
 
-## Non-prerelease 0.1.0 candidate
+## Current non-prerelease 0.1.0
 
-The owner authorized this release on 7 November 2026. Require the reviewed
+Published on 7 November 2026 through Trusted Publishing. The exact crate from
+crates.io matches the hosted artifact and passed a clean Rust 1.88 consumer.
+[Receipt](evidence/release-0.1.0.json) · [GitHub release](https://github.com/PerchAnton/edit-session/releases/tag/v0.1.0).
+
+For later releases, require the reviewed
 commit to pass the full CI matrix, merge it into main and wait for main CI.
 Then create the matching v0.1.0 tag and use the existing Trusted Publishing
 workflow with publish=true. Keep environment approval and archive checks intact.

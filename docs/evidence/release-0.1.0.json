@@ -1,0 +1,12 @@
+{
+  "version": "0.1.0",
+  "registry": "crates.io",
+  "rust": "1.88.0",
+  "clean_consumer": "PASS",
+  "source": "registry+https://github.com/rust-lang/crates.io-index",
+  "archive_sha256": "e075b193982d5d8ce2e46fc53ee1b888138cbf5afa9cfbe2e2309550b22495c6",
+  "commit": "b5c1e6e3f07336f20e3b067d9d2f0ecc834e3da9",
+  "publishWorkflow": "https://github.com/PerchAnton/edit-session/actions/runs/42407532848",
+  "hostedArchiveMatchesRegistry": true,
+  "githubRelease": "https://github.com/PerchAnton/edit-session/releases/tag/v0.1.0"
+}

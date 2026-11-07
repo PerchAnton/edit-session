@@ -50,9 +50,9 @@ same tests. [What to measure in the second dialog](docs/ADOPTION.md#try-a-second
 The separate [interaction-check](https://github.com/PerchAnton/interaction-check)
 development tool is optional. Neither project depends on the other.
 
-## 0.1.0 release preparation
+## Current release 0.1.0
 
-**Candidate: [0.1.0 on crates.io](https://crates.io/crates/edit-session/0.1.0) · Rust 1.88+**
+**[0.1.0 on crates.io](https://crates.io/crates/edit-session/0.1.0) · Rust 1.88+**
 
 **[GitHub release and checksums](https://github.com/PerchAnton/edit-session/releases/tag/v0.1.0)** · **[API documentation](https://docs.rs/edit-session/0.1.0/edit_session/)** · [Download the crate](https://crates.io/api/v1/crates/edit-session/0.1.0/download) · [Previous beta.2 installation evidence](docs/evidence/release-beta2.json) · [Changelog](CHANGELOG.md) · [Use as a dependency](#use-from-another-project)
 
@@ -121,8 +121,10 @@ dated measurements. Each figure has a source and a defined scope.
 | Proposal/check loop | **999 pairs; 0 additional clones** | [Instrumented test](tests/lifecycle.rs); one clone at construction, one more on Reset; caller work excluded |
 | Integration cost | **+217 production UI lines** | [267 added / 50 removed](docs/ADOPTION.md#count-the-cost-as-well); no total-code or speed improvement is claimed |
 
-**First non-prerelease candidate, 0.1.0.** Maintained by [PerchAnton](https://github.com/PerchAnton).
-Publication is pending registry verification. Consumers may also use a pinned Git revision.
+**First non-prerelease, 0.1.0.** Maintained by [PerchAnton](https://github.com/PerchAnton).
+Published on crates.io and GitHub on 7 November 2026. The registry archive matches
+the verified workflow output; a clean Rust 1.88 consumer passed.
+[Publication evidence](docs/evidence/release-0.1.0.json). Consumers may also use a pinned Git revision.
 Upstream source and dependency approval remain separate decisions.
 
 Begin an edit, preview values, reject invalid input, cancel, and produce a single change

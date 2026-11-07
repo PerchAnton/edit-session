@@ -3,7 +3,8 @@
 ## 0.1.0
 
 - First non-prerelease, with an explicit 0.1.x patch compatibility and best-effort
-  support policy. Published status is recorded after registry verification.
+  support policy. Published on 7 November 2026; registry and clean-consumer
+  checks are recorded in docs/evidence/release-0.1.0.json.
 - The runtime, public types and minimal trait bounds are unchanged from beta.2.
   No stored data or caller migration is required.
 
