@@ -1,6 +1,6 @@
 # edit-session
 
-Beta **0.1.0-beta.2** includes the runnable local-helper comparison and the dependency source guide. Read the [compatibility boundary](https://github.com/PerchAnton/edit-session/blob/main/docs/COMPATIBILITY.md) before upgrading.
+Version **0.1.0** preserves the runnable local-helper comparison and the dependency source guide. Read the [compatibility boundary](https://github.com/PerchAnton/edit-session/blob/main/docs/COMPATIBILITY.md) before upgrading.
 
 Keep an editable draft separate from live data, then check that its document, target
 and revision are still current before the host applies a change. A standalone Rust
@@ -50,11 +50,11 @@ same tests. [What to measure in the second dialog](docs/ADOPTION.md#try-a-second
 The separate [interaction-check](https://github.com/PerchAnton/interaction-check)
 development tool is optional. Neither project depends on the other.
 
-## Current prerelease
+## 0.1.0 release preparation
 
-**[0.1.0-beta.2 on crates.io](https://crates.io/crates/edit-session/0.1.0-beta.2) · Rust 1.88+**
+**Candidate: [0.1.0 on crates.io](https://crates.io/crates/edit-session/0.1.0) · Rust 1.88+**
 
-**[GitHub prerelease and checksums](https://github.com/PerchAnton/edit-session/releases/tag/v0.1.0-beta.2)** · **[API documentation](https://docs.rs/edit-session/0.1.0-beta.2/edit_session/)** · [Download the crate](https://crates.io/api/v1/crates/edit-session/0.1.0-beta.2/download) · [Beta.2 installation evidence](docs/evidence/release-beta2.json) · [Changelog](CHANGELOG.md) · [Use as a dependency](#use-from-another-project)
+**[GitHub release and checksums](https://github.com/PerchAnton/edit-session/releases/tag/v0.1.0)** · **[API documentation](https://docs.rs/edit-session/0.1.0/edit_session/)** · [Download the crate](https://crates.io/api/v1/crates/edit-session/0.1.0/download) · [Previous beta.2 installation evidence](docs/evidence/release-beta2.json) · [Changelog](CHANGELOG.md) · [Use as a dependency](#use-from-another-project)
 
 <details>
 <summary>Historical alpha.5 package snapshot and verification</summary>
@@ -76,8 +76,8 @@ remains available.
 
 </details>
 
-Trying the beta? [Report a bug](https://github.com/PerchAnton/edit-session/issues/new?template=bug_report.yml)
-with your revision and a short sequence of calls, or read the [beta compatibility policy](docs/COMPATIBILITY.md).
+Trying the library? [Report a bug](https://github.com/PerchAnton/edit-session/issues/new?template=bug_report.yml)
+with your revision and a short sequence of calls, or read the [0.1.x compatibility policy](docs/COMPATIBILITY.md).
 
 ## Retry after a rejected command
 
@@ -90,7 +90,7 @@ correction, Cancel, preserved Redo and duplicate confirmation.
 From a checkout of this release:
 
 ```sh
-git clone --branch v0.1.0-beta.2 --depth 1 https://github.com/PerchAnton/edit-session.git
+git clone --branch v0.1.0 --depth 1 https://github.com/PerchAnton/edit-session.git
 cd edit-session
 cargo run --locked --example retry_command
 cargo test --locked --example retry_command
@@ -98,7 +98,7 @@ cargo test --locked --example retry_command
 
 This uses the existing API; the host owns atomic command rejection and UI state.
 These model tests do not substitute for consumer UI regressions. [Changelog](CHANGELOG.md)
-and [release preparation](docs/RELEASING.md) describe the published beta and its package checks.
+and [release preparation](docs/RELEASING.md) describe the release process and package checks.
 
 ## Evidence and trade-offs
 
@@ -121,9 +121,9 @@ dated measurements. Each figure has a source and a defined scope.
 | Proposal/check loop | **999 pairs; 0 additional clones** | [Instrumented test](tests/lifecycle.rs); one clone at construction, one more on Reset; caller work excluded |
 | Integration cost | **+217 production UI lines** | [267 added / 50 removed](docs/ADOPTION.md#count-the-cost-as-well); no total-code or speed improvement is claimed |
 
-**Experimental beta, 0.1.0-beta.2.** Maintained by [PerchAnton](https://github.com/PerchAnton).
-Available on crates.io and as a Git dependency. PhotoCraft and PdfCraft
-integrations are proposed and await upstream approval.
+**First non-prerelease candidate, 0.1.0.** Maintained by [PerchAnton](https://github.com/PerchAnton).
+Publication is pending registry verification. Consumers may also use a pinned Git revision.
+Upstream source and dependency approval remain separate decisions.
 
 Begin an edit, preview values, reject invalid input, cancel, and produce a single change
 for the host to commit. The crate has no dependencies and uses `no_std`.
@@ -170,14 +170,14 @@ sequence and shared report help your consumer. The [API contracts](src/lib.rs) a
 
 ## Use from another project
 
-Add this exact prerelease to your crate's `[dependencies]`:
+Add this exact release to your crate's `[dependencies]`:
 
 ```toml
-edit-session = "=0.1.0-beta.2"
+edit-session = "=0.1.0"
 ```
 
 Commit the resulting `Cargo.lock`. For a Git dependency, resolve the release tag
-`v0.1.0-beta.2` to its full commit SHA and pin that revision.
+`v0.1.0` to its full commit SHA and pin that revision.
 The companion
 [interaction-check](https://github.com/PerchAnton/interaction-check) project replays semantic
 scenarios against adapters using this library.
