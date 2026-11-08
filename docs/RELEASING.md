@@ -48,7 +48,7 @@ A fresh consumer checked commit, no-op, Undo freshness and Reset. Both packaged 
 and the generated context diagram pass. [Evidence](evidence/release-alpha5.json).
 Earlier alpha.4 registry files and alpha.3 GitHub assets remain unchanged.
 
-## Alpha compatibility
+## Historical alpha compatibility
 
 - Alpha releases are experimental. Public types, methods, trait bounds and behavior
   may change between releases, even within `0.1.0`. Alpha.3 matching alpha.2 does not
@@ -89,10 +89,10 @@ checks the source and example on Rust 1.88 and stable. To validate packaged test
 unpack the new `target/package/edit-session-<version>.crate` into a temporary directory
 and run `cargo test --locked` and the example from that directory.
 
-A GitHub prerelease can attach the checked `.crate` archive and SHA-256 checksum to
-an exact green commit. It is a source archive, not a globally installed executable.
-Consumers can continue using a fixed Git revision while the API is experimental.
-Do not present an alpha release as the latest stable release.
+Attach the checked `.crate` archive and SHA-256 checksum to a release on the
+exact green commit. Set `prerelease=false` for 1.0.0; use a prerelease only for
+versions labelled alpha, beta or rc. The crate is a source archive, not a globally
+installed executable. Preserve the existing releases and their assets.
 
 ## Registry publication
 
@@ -165,7 +165,7 @@ the workflow to re-upload alpha.4 after its manual first publication.
 
 ### Verify installation after publication
 
-Use a fresh consumer project and the exact prerelease dependency:
+Use a fresh consumer project and the exact newly published dependency:
 
 ```toml
 [dependencies]
