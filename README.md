@@ -1,5 +1,9 @@
 # edit-session
 
+**1.0.0 is being prepared and is not published yet.** Install 0.1.0 until the
+[release checklist](https://github.com/PerchAnton/edit-session/blob/main/docs/RELEASE-1.0.md)
+is complete. The candidate preserves behavior and defines the 1.x compatibility commitment.
+
 Version **0.1.0** preserves the runnable local-helper comparison and the dependency source guide. Read the [compatibility boundary](https://github.com/PerchAnton/edit-session/blob/main/docs/COMPATIBILITY.md) before upgrading.
 
 Keep an editable draft separate from live data, then check that its document, target
@@ -77,7 +81,7 @@ remains available.
 </details>
 
 Trying the library? [Report a bug](https://github.com/PerchAnton/edit-session/issues/new?template=bug_report.yml)
-with your revision and a short sequence of calls, or read the [0.1.x compatibility policy](docs/COMPATIBILITY.md).
+with your revision and a short sequence of calls, or read the [1.x candidate compatibility policy](docs/COMPATIBILITY.md).
 
 ## Retry after a rejected command
 

@@ -1,5 +1,11 @@
 # Releases and compatibility
 
+## Next candidate: 1.0.0 (not published)
+
+Follow [the 1.0 checklist](RELEASE-1.0.md). Use a **new** tag matching the reviewed
+package version; never reuse v0.1.0. Preparation and CI do not publish a package.
+
+
 ## Current non-prerelease 0.1.0
 
 Published on 7 November 2026 through Trusted Publishing. The exact crate from
@@ -8,14 +14,13 @@ crates.io matches the hosted artifact and passed a clean Rust 1.88 consumer.
 
 For later releases, require the reviewed
 commit to pass the full CI matrix, merge it into main and wait for main CI.
-Then create the matching v0.1.0 tag and use the existing Trusted Publishing
+Then create a new matching version tag and use the existing Trusted Publishing
 workflow with publish=true. Keep environment approval and archive checks intact.
 Do not mark the release published until registry hashes and a clean installation
 are verified. Publish the GitHub release with prerelease=false and attach the
 exact registry artifacts and checksums. Earlier prereleases stay unchanged.
 
-The [0.1.x contract](COMPATIBILITY.md) defines patch compatibility and support;
-this release does not claim the separate future 1.0 commitment.
+The [published 0.1.x contract](https://github.com/PerchAnton/edit-session/blob/v0.1.0/docs/COMPATIBILITY.md) remains historical. The [candidate 1.x contract](COMPATIBILITY.md) awaits publication.
 
 ## Previous beta 0.1.0-beta.2
 
@@ -164,11 +169,11 @@ Use a fresh consumer project and the exact prerelease dependency:
 
 ```toml
 [dependencies]
-edit-session = "=0.1.0-beta.1"
+edit-session = "=<approved-version>"
 ```
 
 Run `cargo check`, confirm `Cargo.lock` names the crates.io source (not a path/Git
-override), and check the [API documentation](https://docs.rs/edit-session/0.1.0-beta.1/).
+override), and check the [API documentation](https://docs.rs/edit-session/).
 Only then mark the README/changelog as published. Never
 overwrite a published version; fixes require a new version.
 
