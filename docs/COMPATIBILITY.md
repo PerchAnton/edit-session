@@ -15,8 +15,7 @@ are breaking when they invalidate supported consumers. Internal details and the
 exclusions below are outside this contract. A bug fix restores documented behavior;
 it must include a reproducer and describe any changed result.
 
-Maintenance by PerchAnton is best effort, targeting the latest 1.x release once
-published. Older releases remain downloadable, not separate maintenance branches.
+Maintenance by PerchAnton is best effort, targeting the latest 1.x release. Older releases remain downloadable, not separate maintenance branches.
 There is no SLA, fixed support term or independent security audit. Report defects
 with exact versions and synthetic inputs, without secrets or personal documents.
 Application owners remain responsible for native regression tests and rollout.
@@ -44,7 +43,7 @@ lock. An `Rc<RefCell<_>>` clone is not an independent snapshot.
 
 ## Upgrading and evidence
 
-After publication, upgrade the dependency to `=1.0.0` (or `1` for compatible updates). Re-run the host's native
+Upgrade the dependency to `=1.0.0` (or `1` for compatible updates). Re-run the host's native
 regressions before changing the pin. The upgrade from 0.1.0 adds no fields to stored documents:
 sessions are in-memory state, not a serialization format. Error variants are for
 branching; Display/Debug prose and memory layout are not a machine protocol.

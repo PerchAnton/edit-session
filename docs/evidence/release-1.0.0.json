@@ -1,0 +1,29 @@
+{
+  "package": "edit-session",
+  "version": "1.0.0",
+  "published": true,
+  "checkedAt": "2026-11-08T08:09:41.818079+00:00",
+  "sourceCommit": "0ae2f5dc9d7fb0f6625d88a8dc73d0eb1b469f40",
+  "mergeCommit": "089281a31f593b54aa73fa746e87f67f712f2b85",
+  "mainCi": 42461181416,
+  "publicationWorkflow": 42461293129,
+  "archive": {
+    "file": "edit-session-1.0.0.crate",
+    "bytes": 52019,
+    "sha256": "6687ebc3ff5d798d14e39ad9fff545c46f94004d98113ed50168676dd323e4c6",
+    "registryMatchesWorkflow": true
+  },
+  "consumer": {
+    "rust": "1.99.1",
+    "registryDependency": {
+      "name": "edit-session",
+      "version": "1.0.0",
+      "source": "registry+https://github.com/rust-lang/crates.io-index",
+      "checksum": "6687ebc3ff5d798d14e39ad9fff545c46f94004d98113ed50168676dd323e4c6"
+    },
+    "no_std": true,
+    "lifecycleTests": 16,
+    "contractTests": 5
+  },
+  "msrv": "1.88 tested in CI and publication workflow"
+}

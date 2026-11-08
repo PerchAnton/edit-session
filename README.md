@@ -1,10 +1,9 @@
 # edit-session
 
-**1.0.0 is being prepared and is not published yet.** Install 0.1.0 until the
-[release checklist](https://github.com/PerchAnton/edit-session/blob/main/docs/RELEASE-1.0.md)
-is complete. The candidate preserves behavior and defines the 1.x compatibility commitment.
+**1.0.0 is published.** The [1.x compatibility contract](docs/COMPATIBILITY.md)
+covers the supported API and behavior. [Verified publication and installation](docs/evidence/release-1.0.0.json).
 
-Version **0.1.0** preserves the runnable local-helper comparison and the dependency source guide. Read the [compatibility boundary](https://github.com/PerchAnton/edit-session/blob/main/docs/COMPATIBILITY.md) before upgrading.
+Version **1.0.0** preserves the runnable local-helper comparison and the dependency source guide. Read the [compatibility boundary](https://github.com/PerchAnton/edit-session/blob/main/docs/COMPATIBILITY.md) before upgrading.
 
 Keep an editable draft separate from live data, then check that its document, target
 and revision are still current before the host applies a change. A standalone Rust
@@ -54,11 +53,11 @@ same tests. [What to measure in the second dialog](docs/ADOPTION.md#try-a-second
 The separate [interaction-check](https://github.com/PerchAnton/interaction-check)
 development tool is optional. Neither project depends on the other.
 
-## Current release 0.1.0
+## Current release 1.0.0
 
-**[0.1.0 on crates.io](https://crates.io/crates/edit-session/0.1.0) · Rust 1.88+**
+**[1.0.0 on crates.io](https://crates.io/crates/edit-session/1.0.0) · Rust 1.88+**
 
-**[GitHub release and checksums](https://github.com/PerchAnton/edit-session/releases/tag/v0.1.0)** · **[API documentation](https://docs.rs/edit-session/0.1.0/edit_session/)** · [Download the crate](https://crates.io/api/v1/crates/edit-session/0.1.0/download) · [Previous beta.2 installation evidence](docs/evidence/release-beta2.json) · [Changelog](CHANGELOG.md) · [Use as a dependency](#use-from-another-project)
+**[GitHub release and checksums](https://github.com/PerchAnton/edit-session/releases/tag/v1.0.0)** · **[API documentation](https://docs.rs/edit-session/1.0.0/edit_session/)** · [Download the crate](https://crates.io/api/v1/crates/edit-session/1.0.0/download) · [Previous beta.2 installation evidence](docs/evidence/release-beta2.json) · [Changelog](CHANGELOG.md) · [Use as a dependency](#use-from-another-project)
 
 <details>
 <summary>Historical alpha.5 package snapshot and verification</summary>
@@ -81,7 +80,7 @@ remains available.
 </details>
 
 Trying the library? [Report a bug](https://github.com/PerchAnton/edit-session/issues/new?template=bug_report.yml)
-with your revision and a short sequence of calls, or read the [1.x candidate compatibility policy](docs/COMPATIBILITY.md).
+with your revision and a short sequence of calls, or read the [1.x compatibility policy](docs/COMPATIBILITY.md).
 
 ## Retry after a rejected command
 
@@ -94,7 +93,7 @@ correction, Cancel, preserved Redo and duplicate confirmation.
 From a checkout of this release:
 
 ```sh
-git clone --branch v0.1.0 --depth 1 https://github.com/PerchAnton/edit-session.git
+git clone --branch v1.0.0 --depth 1 https://github.com/PerchAnton/edit-session.git
 cd edit-session
 cargo run --locked --example retry_command
 cargo test --locked --example retry_command
@@ -125,10 +124,11 @@ dated measurements. Each figure has a source and a defined scope.
 | Proposal/check loop | **999 pairs; 0 additional clones** | [Instrumented test](tests/lifecycle.rs); one clone at construction, one more on Reset; caller work excluded |
 | Integration cost | **+217 production UI lines** | [267 added / 50 removed](docs/ADOPTION.md#count-the-cost-as-well); no total-code or speed improvement is claimed |
 
-**First non-prerelease, 0.1.0.** Maintained by [PerchAnton](https://github.com/PerchAnton).
-Published on crates.io and GitHub on 7 November 2026. The registry archive matches
-the verified workflow output; a clean Rust 1.88 consumer passed.
-[Publication evidence](docs/evidence/release-0.1.0.json). Consumers may also use a pinned Git revision.
+**Stable 1.0.0.** Maintained by [PerchAnton](https://github.com/PerchAnton).
+Published on crates.io and GitHub on 8 November 2026. The registry archive matches
+the verified workflow output. Rust 1.88 passed CI; a clean Rust 1.99.1 registry
+consumer passed 21 lifecycle and contract checks.
+[Publication evidence](docs/evidence/release-1.0.0.json). Consumers may also use a pinned Git revision.
 Upstream source and dependency approval remain separate decisions.
 
 Begin an edit, preview values, reject invalid input, cancel, and produce a single change
@@ -179,11 +179,11 @@ sequence and shared report help your consumer. The [API contracts](src/lib.rs) a
 Add this exact release to your crate's `[dependencies]`:
 
 ```toml
-edit-session = "=0.1.0"
+edit-session = "=1.0.0"
 ```
 
 Commit the resulting `Cargo.lock`. For a Git dependency, resolve the release tag
-`v0.1.0` to its full commit SHA and pin that revision.
+`v1.0.0` to its full commit SHA and pin that revision.
 The companion
 [interaction-check](https://github.com/PerchAnton/interaction-check) project replays semantic
 scenarios against adapters using this library.

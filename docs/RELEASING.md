@@ -1,12 +1,13 @@
 # Releases and compatibility
 
-## Next candidate: 1.0.0 (not published)
+## Current release 1.0.0
 
-Follow [the 1.0 checklist](RELEASE-1.0.md). Use a **new** tag matching the reviewed
-package version; never reuse v0.1.0. Preparation and CI do not publish a package.
+Published on 8 November 2026 through Trusted Publishing after successful main CI.
+Registry archive bytes match the workflow; clean installation checks passed.
+[Receipt](evidence/release-1.0.0.json) · [Release checklist](RELEASE-1.0.md) ·
+[GitHub release](https://github.com/PerchAnton/edit-session/releases/tag/v1.0.0).
 
-
-## Current non-prerelease 0.1.0
+## Previous non-prerelease 0.1.0
 
 Published on 7 November 2026 through Trusted Publishing. The exact crate from
 crates.io matches the hosted artifact and passed a clean Rust 1.88 consumer.
@@ -20,7 +21,7 @@ Do not mark the release published until registry hashes and a clean installation
 are verified. Publish the GitHub release with prerelease=false and attach the
 exact registry artifacts and checksums. Earlier prereleases stay unchanged.
 
-The [published 0.1.x contract](https://github.com/PerchAnton/edit-session/blob/v0.1.0/docs/COMPATIBILITY.md) remains historical. The [candidate 1.x contract](COMPATIBILITY.md) awaits publication.
+The [published 0.1.x contract](https://github.com/PerchAnton/edit-session/blob/v0.1.0/docs/COMPATIBILITY.md) remains historical. The [1.x contract](COMPATIBILITY.md) applies to 1.0.0 and compatible updates.
 
 ## Previous beta 0.1.0-beta.2
 
