@@ -1,10 +1,8 @@
 # edit-session
 
-**1.0.0 is being prepared and is not published yet.** Install 0.1.0 until the
-[release checklist](https://github.com/PerchAnton/edit-session/blob/main/docs/RELEASE-1.0.md)
-is complete. The candidate preserves behavior and defines the 1.x compatibility commitment.
+This page documents **1.0.0**. Check the [release status](https://github.com/PerchAnton/edit-session/releases/tag/v1.0.0) for registry availability.
 
-Version **0.1.0** preserves the runnable local-helper comparison and the dependency source guide. Read the [compatibility boundary](https://github.com/PerchAnton/edit-session/blob/main/docs/COMPATIBILITY.md) before upgrading.
+Version **1.0.0** preserves the runnable local-helper comparison and the dependency source guide. Read the [compatibility boundary](https://github.com/PerchAnton/edit-session/blob/main/docs/COMPATIBILITY.md) before upgrading.
 
 A small, toolkit-independent Rust library for preview, validation and commit
 lifecycles. **`no_std`, zero runtime dependencies, Rust 1.88+.** MIT OR Apache-2.0.
@@ -19,10 +17,10 @@ Add the release to your dependencies:
 
 ```toml
 [dependencies]
-edit-session = "=0.1.0"
+edit-session = "=1.0.0"
 ```
 
-The published 0.1.x patch line preserves its documented API; 1.x is still pending. Pin an exact version and keep `Cargo.lock` for
+The 1.x line preserves the documented API. Pin an exact version and keep `Cargo.lock` for
 applications. Read the
 [compatibility policy](https://github.com/PerchAnton/edit-session/blob/main/docs/COMPATIBILITY.md)
 before upgrading. For other distribution options and current publication status,
