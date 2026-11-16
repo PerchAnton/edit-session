@@ -14,6 +14,8 @@ jobs:
       - run: cargo +${{ matrix.rust }} test --locked
       - run: cargo +${{ matrix.rust }} run --locked --example retry_command
       - run: cargo +${{ matrix.rust }} run --locked --example context_walkthrough
+      - run: cargo +${{ matrix.rust }} run --locked --example nested_cancel
+      - run: cargo +${{ matrix.rust }} run --locked --example canonical_save
       - run: python3 tools/context_evidence.py --check
       - run: cargo +${{ matrix.rust }} fmt --check
       - run: cargo +${{ matrix.rust }} clippy --locked --all-targets -- -D warnings

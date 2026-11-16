@@ -20,6 +20,14 @@ test = true
 name = "helper_comparison"
 test = true
 
+[[example]]
+name = "nested_cancel"
+test = true
+
+[[example]]
+name = "canonical_save"
+test = true
+
 [lints.rust]
 unsafe_code = "forbid"
 

@@ -84,6 +84,10 @@ with your revision and a short sequence of calls, or read the [1.x compatibility
 
 ## Retry after a rejected command
 
+[Two more host boundaries](docs/DRAFT_BOUNDARIES.md) cover Cancel inside a parent
+form and reloading the canonical value after a successful save. They include a
+local-helper comparison and ten model tests; they do not claim upstream adoption.
+
 [Run the recovery example](docs/RECOVERY.md): it keeps the draft and raw fields open
 when a host command is denied, checks freshness again on retry, and closes only after
 success or a checked no-op. **Eight example tests pass** alongside the 16 lifecycle
