@@ -90,9 +90,10 @@ fn main() -> Result<(), &'static str> {
     let current = panel.start("original", context)?;
     assert!(!panel.receive(old, Ok("stale".into())));
     assert!(panel.receive(current, Ok("current".into())));
-    println!(
-        "Only the current request supplied the preview; confirmation still checks document context."
-    );
+    let mut live = "original".into();
+    assert_eq!(panel.confirm(&mut live, &context), Ok(true));
+    assert_eq!(live, "current");
+    println!("The current request committed once after document context validation.");
     Ok(())
 }
 #[cfg(test)]
