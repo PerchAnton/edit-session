@@ -28,6 +28,10 @@ test = true
 name = "canonical_save"
 test = true
 
+[[example]]
+name = "request_generation"
+test = true
+
 [lints.rust]
 unsafe_code = "forbid"
 

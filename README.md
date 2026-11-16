@@ -326,3 +326,7 @@ Licensed under either the [MIT license](LICENSE-MIT) or the
 [Apache License, Version 2.0](LICENSE-APACHE), at your option.
 Unless explicitly stated otherwise, contributions submitted for inclusion are offered
 under the same dual license.
+
+[Request generation and draft context](docs/request-generation.md) separates late
+background results from stale document commits. It includes eight model tests
+and explains when a local ticket guard is sufficient without this dependency.
