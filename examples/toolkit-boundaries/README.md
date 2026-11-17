@@ -5,10 +5,21 @@ Its dependencies are example-only; the main library stays dependency-free.
 Run the small host-side recipes without starting a window or terminal:
 
 ```sh
-cargo test --locked --manifest-path examples/toolkit-boundaries/Cargo.toml
-cargo clippy --locked --manifest-path examples/toolkit-boundaries/Cargo.toml --all-targets -- -D warnings
+cargo test --locked --manifest-path examples/toolkit-boundaries/Cargo.toml --all-features
+cargo clippy --locked --manifest-path examples/toolkit-boundaries/Cargo.toml --all-features --all-targets -- -D warnings
 cargo fmt --manifest-path examples/toolkit-boundaries/Cargo.toml --check
 ```
+
+To build only one ecosystem, select its feature, for example:
+
+```sh
+cargo test --locked --manifest-path examples/toolkit-boundaries/Cargo.toml --features tuirealm --test tuirealm
+```
+
+Available features match the test filenames. None are enabled by default;
+`--all-features` explicitly checks all eight. On Ubuntu, the Slint recipe also
+requires `libfontconfig1-dev` (`sudo apt-get install libfontconfig1-dev`). The
+other recipes do not pull Slint or its system dependency when selected alone.
 
 Rust 1.99.1 is used for this set of current toolkit versions. This does not change
 the core crate's Rust 1.88 minimum. `Cargo.lock` pins the full dependency tree.
