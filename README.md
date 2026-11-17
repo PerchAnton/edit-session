@@ -13,6 +13,8 @@ library: `no_std`, zero runtime dependencies, Rust 1.88+.
 
 **[First example](#same-value-different-edit)** · **[Try recovery](#retry-after-a-rejected-command)** · **[Install](#use-from-another-project)** · **[Evidence](#evidence-and-trade-offs)** · **[License](#license)**
 
+[Toolkit boundary recipes](examples/toolkit-boundaries/README.md) exercise the published crate with eight Rust UI ecosystems: local drafts, stale callbacks, recycled IDs and effect previews. Each recipe states what its native tests do and do not cover.
+
 ## Same value, different edit
 
 ![An executable example: an old draft starts at revision 42. Another edit changes the value from 100 to 120; Undo restores 100 at revision 44. The old draft remains stale, including after Reset.](docs/assets/context-walkthrough.svg)
