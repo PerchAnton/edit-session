@@ -1,0 +1,70 @@
+[package]
+name = "edit-session-toolkit-boundaries"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[workspace]
+
+[dependencies]
+edit-session = "=1.0.0"
+dioxus-core = { version = "=0.7.10", optional = true }
+dioxus-signals = { version = "=0.7.10", optional = true }
+yew = { optional = true, version = "=0.23.0", default-features = false }
+sycamore-reactive = { version = "=0.9.4", optional = true }
+vizia_id = { version = "=0.4.0", optional = true }
+iced_runtime = { version = "=0.14.0", optional = true }
+futures = { version = "=0.3.31", optional = true }
+slint = { optional = true, version = "=1.19.0", default-features = false, features = ["std", "compat-1-18"] }
+tuirealm = { optional = true, version = "=4.1.0", default-features = false, features = ["crossterm"] }
+
+tachyonfx = { optional = true, version = "=0.25.2", default-features = false, features = ["std"] }
+ratatui-core = { version = "=0.1.2", optional = true }
+
+[features]
+default = []
+dioxus = ["dep:dioxus-core", "dep:dioxus-signals"]
+yew = ["dep:yew"]
+sycamore = ["dep:sycamore-reactive"]
+vizia = ["dep:vizia_id"]
+iced = ["dep:iced_runtime", "dep:futures"]
+slint = ["dep:slint"]
+tuirealm = ["dep:tuirealm"]
+tachyonfx = ["dep:tachyonfx", "dep:ratatui-core"]
+
+[[test]]
+name = "dioxus"
+required-features = ["dioxus"]
+
+[[test]]
+name = "yew"
+required-features = ["yew"]
+
+[[test]]
+name = "sycamore"
+required-features = ["sycamore"]
+
+[[test]]
+name = "vizia"
+required-features = ["vizia"]
+
+[[test]]
+name = "iced"
+required-features = ["iced"]
+
+[[test]]
+name = "slint"
+required-features = ["slint"]
+
+[[test]]
+name = "tuirealm"
+required-features = ["tuirealm"]
+
+[[test]]
+name = "tachyonfx"
+required-features = ["tachyonfx"]
+
+[profile.dev]
+debug = 0
+strip = "none"
+incremental = false

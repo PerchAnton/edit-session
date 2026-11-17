@@ -13,6 +13,8 @@ library: `no_std`, zero runtime dependencies, Rust 1.88+.
 
 **[First example](#same-value-different-edit)** · **[Try recovery](#retry-after-a-rejected-command)** · **[Install](#use-from-another-project)** · **[Evidence](#evidence-and-trade-offs)** · **[License](#license)**
 
+[Toolkit boundary recipes](examples/toolkit-boundaries/README.md) exercise the published crate with eight Rust UI ecosystems: local drafts, stale callbacks, recycled IDs and effect previews. Each recipe states what its native tests do and do not cover.
+
 ## Same value, different edit
 
 ![An executable example: an old draft starts at revision 42. Another edit changes the value from 100 to 120; Undo restores 100 at revision 44. The old draft remains stale, including after Reset.](docs/assets/context-walkthrough.svg)
@@ -83,6 +85,10 @@ Trying the library? [Report a bug](https://github.com/PerchAnton/edit-session/is
 with your revision and a short sequence of calls, or read the [1.x compatibility policy](docs/COMPATIBILITY.md).
 
 ## Retry after a rejected command
+
+[Two more host boundaries](docs/DRAFT_BOUNDARIES.md) cover Cancel inside a parent
+form and reloading the canonical value after a successful save. They include a
+local-helper comparison and ten model tests; they do not claim upstream adoption.
 
 [Run the recovery example](docs/RECOVERY.md): it keeps the draft and raw fields open
 when a host command is denied, checks freshness again on retry, and closes only after
@@ -322,3 +328,7 @@ Licensed under either the [MIT license](LICENSE-MIT) or the
 [Apache License, Version 2.0](LICENSE-APACHE), at your option.
 Unless explicitly stated otherwise, contributions submitted for inclusion are offered
 under the same dual license.
+
+[Request generation and draft context](docs/request-generation.md) separates late
+background results from stale document commits. It includes eight model tests
+and explains when a local ticket guard is sufficient without this dependency.
